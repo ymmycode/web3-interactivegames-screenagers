@@ -34,7 +34,7 @@ onMounted(() => {
       window.addEventListener("deviceorientation", (event) => {
         setTimeout(() => {
           handleOrientation(event)
-        }, 1000 / 20)
+        }, 1000 / 10)
       }, true);
     }
   })
