@@ -1,9 +1,11 @@
 <template>
   <main class="fixed top-0 left-0 full-height w-full">
 
-    <LazyBackground/>
+    <Background/>
 
-    <LazyUIElements/>
+    <UIElements/>
+
+    <GamePlay/>
 
     <section class="w-auto h-auto">
       <div class="w-full h-full flex justify-start items-stretch max-w-screen-big-screen mx-auto">

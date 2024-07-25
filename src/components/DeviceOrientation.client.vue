@@ -31,7 +31,11 @@ onMounted(() => {
     alert(window.DeviceOrientationEvent)
     if (window.DeviceOrientationEvent) {
       orientationCheck.value = true
-      window.addEventListener("deviceorientation", handleOrientation, true);
+      window.addEventListener("deviceorientation", (event) => {
+        setTimeout(() => {
+          handleOrientation(event)
+        }, 1000 / 20)
+      }, true);
     }
   })
 })

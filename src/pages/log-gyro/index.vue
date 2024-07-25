@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <LazyDeviceOrientation/>
-  </div>
+  <LazyDeviceOrientation/>
 </template>
 
 <script setup>
