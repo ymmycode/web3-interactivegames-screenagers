@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --vh: 1vh;
+}
+
+*
+{
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  // outline: 1px solid red;
+  scroll-behavior: initial;
+}
+
+.unbounded {
+  font-family: 'Unbounded', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+*::-webkit-scrollbar-track
+{
+	background-color: #F5F5F500;
+}
+
+*::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F500;
+  display: none;
+}
+
+*::-webkit-scrollbar-thumb
+{
+  @apply bg-primary-1;
+}
+
+html, body {
+  overscroll-behavior: none;
+  background-color: black;
+  min-height: -webkit-fill-available;
+  height: -webkit-fill-available;
+  font-family: 'Inter', sans-serif;
+}
+
+body{
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+.full-height {
+  height: calc(var(--vh, 1vh) * 100) !important;
+}
+
+.box {
+  position: relative;
+}
+.box:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #e3e935;
+  clip-path: polygon(
+    0 0,
+    calc(100% - calc((140 / 1920) * 100vh)) 0,
+    100% calc((140 / 1920) * 100vh),
+    100% 100%,
+    0 100%,
+    0 0,
+    .1vw  .1vw ,
+    .1vw calc(100% - .1vw),
+    calc(100% - .1vw) calc(100% - .1vw),
+    calc(100% - .1vw) calc(calc((140 / 1920) * 100vh) + 0.04vw),
+    calc(100% - calc((140 / 1920) * 100vh) - 0.04vw) .1vw,
+    .1vw .1vw
+  );
+}
+
+.text-base-constant {
+  font-size: calc((20 / 1080) * 100vh);
+}
+
+.img-qr {
+  height: calc((180 / 1080) * 100vh);
+  width: calc((180 / 1080) * 100vh);
+}
+
+.img-qr {
+  height: calc((180 / 1080) * 100vh);
+  width: calc((180 / 1080) * 100vh);
+}
+
+.crosshair {
+  height: calc((100 / 1080) * 100vh);
+  width: calc((100 / 1080) * 100vh);
+}
+
+@function randomNum($min, $max) {
+  $rand: random();
+  $randomNum: $min + floor($rand * (($max - $min) + 1));
+
+  @return $randomNum;
+}
+
+.random-color {
+  --deg: #{randomNum(0, 360)}deg;
+  -webkit-filter: hue-rotate(--deg);
+  filter: hue-rotate(--deg);
+}
+
+.container-ui {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  @apply flex items-center justify-center;
+  padding-left: calc((50 / 1920) * 100vh);
+  padding-right: calc((50 / 1920) * 100vh);
+  padding-top: calc((25 / 1080) * 100vh);
+  padding-bottom: calc((25 / 1080) * 100vh);
+}
+
+// animation
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-intro-enter-active,
+.fade-intro-leave-active {
+  transition: opacity 1s ease;
+}
+
+.fade-intro-enter-from,
+.fade-intro-leave-to {
+  opacity: 0;
+}
