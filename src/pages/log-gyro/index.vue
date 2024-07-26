@@ -1,5 +1,5 @@
 <template>
-  <LazyDeviceOrientation/>
+  <LazyPlayerController/>
 </template>
 
 <script setup>

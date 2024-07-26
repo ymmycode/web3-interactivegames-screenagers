@@ -1,8 +1,6 @@
 <template>
   <div class="text-white">
-    <div>have orientation {{ orientationCheck }}</div>
-    <div>absolute {{ orientationStats.absolute }}</div>
-    <div>alpha {{ orientationStats.alpha }}</div>
+    <div>DeviceOrientationEvent {{ orientationCheck }}</div>
     <div>beta {{ orientationStats.beta }}</div>
     <div>gamma {{ orientationStats.gamma }}</div>
   </div>
@@ -14,9 +12,9 @@ const orientationStats = ref({})
 
 const handleOrientation = (event) => {
   const absolute = event.absolute;
-  const alpha = event.alpha;
-  const beta = event.beta;
-  const gamma = event.gamma;
+  const alpha = event.alpha.toFixed(0);
+  const beta = event.beta.toFixed(0);
+  const gamma = event.gamma.toFixed(0);
 
   orientationStats.value = {
     absolute,
@@ -32,10 +30,11 @@ onMounted(() => {
     if (window.DeviceOrientationEvent) {
       orientationCheck.value = true
       window.addEventListener("deviceorientation", (event) => {
-        setTimeout(() => {
+        const update =  setTimeout(() => {
           handleOrientation(event)
+          clearTimeout(update)
         }, 1000 / 10)
-      }, true);
+      }, false);
     }
   })
 })

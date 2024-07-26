@@ -6,6 +6,11 @@ export const useMainStore = defineStore({
     return {
       receivedData: null,
       roomID: null, 
+      gameOver: false, 
+      timesOut :false,
+      score: 0,
+      players: [],
+      player: {},
     };
   },
   actions: {
@@ -15,7 +20,32 @@ export const useMainStore = defineStore({
 
     async setRoomID (payload) {
       this.roomID = payload;
-    }
+    },
+
+    gameReset () {
+      this.gameOver = false;
+      this.timesOut = false;
+    },
+
+    setGameOver () {
+      this.gameOver = true;
+      this.timesOut = true;
+    },
+
+    setPlayerID (payload) {
+      this.player.id = payload
+    },
+
+    setPlayerEnter (payload) {
+      this.players.push(payload)
+    },
+
+    setPlayerLeave (payload) {
+      this.players = this.players.filter(function(item) {
+        return item.id != payload;
+      });
+    },
+
   },
 });
 

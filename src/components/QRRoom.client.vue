@@ -1,7 +1,7 @@
 <template>
   <div>
     <QRCodeVue3
-      :value="`http://localhost:3000/play?id=${roomIDSync}`"
+      :value="`https://192.168.0.107:3000/play?room=${roomIDSync}`"
       :qrOptions="{ typeNumber: 0, mode: 'Byte', errorCorrectionLevel: 'H' }"
       :imageOptions="{ imageSize: 0.4, }"
       image="/images/qr-logo.png"
@@ -25,7 +25,8 @@ const { roomID } = storeToRefs(mainStore)
 
 const roomIDSync = computed(() => roomID.value)
 
-const id = makeID(20)
+// const id = makeID(5)
+const id = "ArsRz"
 onMounted( async () => {
   await mainStore.setRoomID(id)
 })

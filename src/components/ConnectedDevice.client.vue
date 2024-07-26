@@ -5,15 +5,11 @@
 </template>
 
 <script setup>
-const mainStore = useMainStore()
-const { roomID } = storeToRefs(mainStore)
-const deviceConnected = ref(0)
-
-const roomIDSync = computed(() => roomID.value)
-
-watch(() => roomIDSync.value,
-  (val) => {
-    console.log(roomIDSync.value)
+const props = defineProps({
+  connectedDevice: {
+    type: Number,
+    default: 0
   }
-)
+})
+const deviceConnected = computed(() => props.connectedDevice)
 </script>

@@ -87,22 +87,87 @@ html.lenis, html.lenis body {
   background: #e3e935;
   clip-path: polygon(
     0 0,
-    calc(100% - calc((140 / 1920) * 100vh)) 0,
-    100% calc((140 / 1920) * 100vh),
+    calc(100% - calc((140 / 1920) * 100vw)) 0,
+    100% calc((140 / 1920) * 100vw),
     100% 100%,
     0 100%,
     0 0,
     .1vw  .1vw ,
     .1vw calc(100% - .1vw),
     calc(100% - .1vw) calc(100% - .1vw),
-    calc(100% - .1vw) calc(calc((140 / 1920) * 100vh) + 0.04vw),
-    calc(100% - calc((140 / 1920) * 100vh) - 0.04vw) .1vw,
+    calc(100% - .1vw) calc(calc((140 / 1920) * 100vw) + 0.04vw),
+    calc(100% - calc((140 / 1920) * 100vw) - 0.04vw) .1vw,
     .1vw .1vw
   );
 }
 
+.box-player {
+  position: relative;
+}
+.box-player:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #e3e935;
+  clip-path: polygon(0 6vh,6vh 0,calc(100% - 6vh) 0,100% 6vh,100% calc(100% - 6vh),calc(100% - 6vh) 100%,6vh 100%,0 calc(100% - 6vh),0 6vh,.4vh  calc(6vh + 0.17vh),.4vh calc(100% - 6vh - 0.17vh),calc(6vh + 0.17vh) calc(100% - .4vh),calc(100% - 6vh - 0.17vh) calc(100% - .4vh),calc(100% - .4vh) calc(100% - 6vh - 0.17vh),calc(100% - .4vh) calc(6vh + 0.17vh),calc(100% - 6vh - 0.17vh) .4vh,calc(6vh + 0.17vh) .4vh,.4vh calc(6vh + 0.17vh));
+}
+
+.box-attack-button {
+  position: relative;
+}
+.box-attack-button:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #e3e935;
+  clip-path: polygon(0 6vh,6vh 0,calc(100% - 6vh) 0,100% 6vh,100% 100%,0 100%,0 6vh,.4vh  calc(6vh + 0.17vh),.4vh calc(100% - .4vh),calc(100% - .4vh) calc(100% - .4vh),calc(100% - .4vh) calc(6vh + 0.17vh),calc(100% - 6vh - 0.17vh) .4vh,calc(6vh + 0.17vh) .4vh,.4vh calc(6vh + 0.17vh));
+}
+
+.box-chat {
+  position: relative;
+}
+.box-chat:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #e3e935;
+  clip-path: polygon(0 0,100% 0,100% calc(100% - 6vh),calc(100% - 6vh) 100%,6vh 100%,0 calc(100% - 6vh),0 0,.4vh  .4vh ,.4vh calc(100% - 6vh - 0.17vh),calc(6vh + 0.17vh) calc(100% - .4vh),calc(100% - 6vh - 0.17vh) calc(100% - .4vh),calc(100% - .4vh) calc(100% - 6vh - 0.17vh),calc(100% - .4vh) .4vh,.4vh .4vh);
+}
+
+.box-radial-button {
+  position: relative;
+  clip-path: polygon(0 8.2vh,3vh 3vh,8.2vh 0,calc(100% - 8.2vh) 0,calc(100% - 3vh) 3vh,100% 8.2vh,100% calc(100% - 8.2vh),calc(100% - 3vh) calc(100% - 3vh),calc(100% - 8.2vh) 100%,8.2vh 100%,3vh calc(100% - 3vh),0 calc(100% - 8.2vh));
+}
+
+.box-radial-button-small {
+  position: relative;
+  clip-path: polygon(0 2.73vh,1vh 1vh,2.73vh 0,calc(100% - 2.73vh) 0,calc(100% - 1vh) 1vh,100% 2.73vh,100% calc(100% - 2.73vh),calc(100% - 1vh) calc(100% - 1vh),calc(100% - 2.73vh) 100%,2.73vh 100%,1vh calc(100% - 1vh),0 calc(100% - 2.73vh));
+}
+
 .text-base-constant {
   font-size: calc((20 / 1080) * 100vh);
+}
+
+.text-title-constant {
+  font-size: calc((30 / 1080) * 100vh);
+}
+
+.text-sub-title-constant {
+  font-size: calc((20 / 1080) * 100vh);
+}
+
+.button-attack {
+  height: calc((300 / 1080) * 100vh);
+  width: calc((300 / 1080) * 100vh);
+}
+
+.button-chat {
+  height: calc((140 / 1080) * 100vh);
+  width: calc((140 / 1080) * 100vh);
+}
+
+.button-attack:active, .button-chat:active {
+  @apply scale-95 opacity-75 transition-[transform,opacity] duration-100;
 }
 
 .img-qr {
@@ -142,6 +207,10 @@ html.lenis, html.lenis body {
   padding-right: calc((50 / 1920) * 100vh);
   padding-top: calc((25 / 1080) * 100vh);
   padding-bottom: calc((25 / 1080) * 100vh);
+}
+
+.disable-dbl-tap-zoom {
+  touch-action: manipulation;
 }
 
 // animation
