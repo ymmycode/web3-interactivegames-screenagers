@@ -9,7 +9,6 @@ export const useMainStore = defineStore({
       gameOver: false, 
       timesOut :false,
       score: 0,
-      players: [],
       player: {},
     };
   },
@@ -36,14 +35,8 @@ export const useMainStore = defineStore({
       this.player.id = payload
     },
 
-    setPlayerEnter (payload) {
-      this.players.push(payload)
-    },
-
-    setPlayerLeave (payload) {
-      this.players = this.players.filter(function(item) {
-        return item.id != payload;
-      });
+    resetPlayerID () {
+      this.player.id = {}
     },
 
   },
