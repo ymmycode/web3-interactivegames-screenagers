@@ -15,7 +15,7 @@
         </button>
       </div>
       <div class="w-full h-[30%] box-chat flex flex-col justify-center items-center py-[2vw] gap-[2vw]">
-        <button class="disable-dbl-tap-zoom button-chat w-full bg-primary-1 flex justify-center items-center box-radial-button-small">
+        <button @click="showComs = !showComs" class="disable-dbl-tap-zoom button-chat w-full bg-primary-1 flex justify-center items-center box-radial-button-small">
           <div class="unbounded text-2xl text-center origin-center font-bold text-black p-[1vw]">
             <svg class="max-w-[8vw] w-full h-auto" viewBox="0 0 100 88" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M91 0H8L0 8V87.5H3.04054L22.5 75H91L100 66V9L91 0Z" fill="currentColor "/>
@@ -26,13 +26,17 @@
       </div>
     </div>
   </div>
+
+  <TransitionFade>
+    <ChatRoom v-if="showComs"/>
+  </TransitionFade>
 </template>
 
 <script setup>
 import MakeId from '~/includes/MakeId';
 
 definePageMeta({
-  layout: 'index-layout',
+  layout: 'client-layout',
 });
 
 const mainStore = useMainStore()
@@ -41,6 +45,7 @@ const intro = ref(true)
 const config = useRuntimeConfig()
 const route = useRoute()
 const { $ably, $ablySpaces  } = useNuxtApp();
+const showComs = ref(false)
 
 onMounted(async () => {
   nextTick(() => {
@@ -68,7 +73,7 @@ onMounted(() => {
       });
       gameRoom = ably.channels.get(`room-${roomIDSync.value}`);
       gameRoom.presence.enter()
-      mainStore.setPlayerEnter(player)
+      mainStore.setPlayerID(id)
     }, 300)
   })
 })

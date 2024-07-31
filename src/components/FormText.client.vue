@@ -12,52 +12,37 @@
 </template>
 
 <script setup>
-import { createAvatar } from '@dicebear/core';
-import { botttsNeutral } from '@dicebear/collection';
-
-const { $ably, $ablySpaces  } = useNuxtApp();
-const channel = $ably.channels.get('globalChatRoom');
-
-const character = ["Felix","Aneka"]
-const characterRandom = character[Math.floor(Math.random() * character.length-1)];
-
-const eyesData = ["bulging","dizzy","eva", "bulging","dizzy","eva","frame1","frame2","glow","happy"]
-const eyesRandom1 = eyesData[Math.floor(Math.random() * eyesData.length-1)];
-const eyesRandom2 = eyesData[Math.floor(Math.random() * eyesData.length-1)];
-const eyesRandom3 = eyesData[Math.floor(Math.random() * eyesData.length-1)];
-
-const bgColors = ['b6e3f4','c0aede','d1d4f9','ffd5dc','ffdfbf']
-const bgColor1 = bgColors[Math.floor(Math.random() * bgColors.length-1)];
-const bgColor2 = bgColors[Math.floor(Math.random() * bgColors.length-1)];
-const bgColor3 = bgColors[Math.floor(Math.random() * bgColors.length-1)];
-
-const avatar = createAvatar(botttsNeutral, {
-  randomizeIds: true,
-  seed: characterRandom,
-  eyes: [eyesRandom1, eyesRandom2, eyesRandom3],
-  bgColors: [bgColor1, bgColor2, bgColor3],
-});
-const svg = avatar.toDataUri();
-
 const mainStore = useMainStore()
-const { chatID } = storeToRefs(mainStore)
+const { roomID } = storeToRefs(mainStore)
+
+// ably realtime
+const config = useRuntimeConfig()
+const { $ably, $ablySpaces } = useNuxtApp();
+let ably = null
+let gameRoom = null
+const roomIDSync = computed(() => roomID.value)
 const textInput = ref("")
 
+const initChannel =  async () => {
+  ably = new $ably.Realtime({
+    key: config.app.ablyAPIKey,
+  });
+  gameRoom = ably.channels.get(`room-${roomIDSync.value}`);
+}
+
 const sendMessage = async () => {
-  await channel.publish({
+  await gameRoom.publish({
     data: {
-      img: svg,
       chat: textInput.value,
-      chatID: chatID.value
     }
   }).then(() => {
     textInput.value = ""
   })
 }
 
-const typing = async () => {
-  // await channel.presence.update('typing', (member) => {
-  //   console.log(member.data);
-  // });
-}
+onMounted(() => {
+  nextTick(() => {
+    initChannel()
+  })
+})
 </script>

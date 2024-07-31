@@ -144,8 +144,46 @@ html.lenis, html.lenis body {
   clip-path: polygon(0 2.73vh,1vh 1vh,2.73vh 0,calc(100% - 2.73vh) 0,calc(100% - 1vh) 1vh,100% 2.73vh,100% calc(100% - 2.73vh),calc(100% - 1vh) calc(100% - 1vh),calc(100% - 2.73vh) 100%,2.73vh 100%,1vh calc(100% - 1vh),0 calc(100% - 2.73vh));
 }
 
+.box-text-container {
+  position: relative;
+  clip-path: polygon(0 0,calc(100% - calc((20 / 1080) * 100vh)) 0,100% calc((20 / 1080) * 100vh),100% 100%,0 100%);
+  padding: calc((20 / 1080) * 100vh) calc((45 / 1080) * 100vh) calc((20 / 1080) * 100vh) calc((45 / 1080) * 100vh);
+  margin-bottom: calc((60 / 1080) * 100vh);
+  z-index: 1;
+}
+
+.box-text-container-bottom {
+  background: #e3e935;
+  width: calc((60 / 1080) * 100vh);
+  height: calc((40 / 1080) * 100vh);
+  transform: skew(0deg, -40deg);
+}
+
+.masking-text-container {
+  outline: 1px solid red;
+  position: absolute;
+  bottom: calc((-50 / 1080) * 100vh);
+  left: 0;
+  width: calc((40 / 1080) * 100vh);
+  height: calc((75 / 1080) * 100vh);
+  --mask: linear-gradient(180deg, rgba(227,233,53,1) 75%, rgba(227,233,53,0) 75%);
+  -webkit-mask: var(--mask);
+          mask: var(--mask);
+}
+
 .text-base-constant {
-  font-size: calc((20 / 1080) * 100vh);
+  font-size: calc((22 / 1080) * 100vh);
+  letter-spacing: calc((1 / 1080) * 100vh);
+}
+
+.text-score-constant {
+  font-size: calc((40 / 1080) * 100vh);
+  letter-spacing: calc((2 / 1080) * 100vh);
+}
+
+.text-chat-constant {
+  font-size: calc((16 / 1080) * 100vh);
+  letter-spacing: calc((1 / 1080) * 100vh);
 }
 
 .text-title-constant {
@@ -237,9 +275,9 @@ html.lenis, html.lenis body {
 // pattern
 .bg-box-pattern-1{
   background-color: #e3e93500;
-  opacity: .3;
-  background-image:  linear-gradient(#e3e935 calc((.4 / 1080) * 100vw), transparent calc((.4 / 1080) * 100vw)), linear-gradient(to right, #e3e935 calc((.4 / 1080) * 100vw), #fff0 calc((.4 / 1080) * 100vw));
-  background-size: calc((45.6 / 1080) * 100vw) calc((43.8 / 1080) * 100vw);
+  opacity: .2;
+  background-image:  linear-gradient(#e3e935 calc((.6 / 1080) * 100vh), transparent calc((.6 / 1080) * 100vh)), linear-gradient(to right, #e3e935 calc((.6 / 1080) * 100vh), #fff0 calc((.6 / 1080) * 100vh));
+  background-size: calc((60 / 1080) * 100vh) calc((60 / 1080) * 100vh);
 
   --mask: linear-gradient(-135deg,#0000 calc((140 / 1920) * 100vw) 0%,#000 10%);
   -webkit-mask: var(--mask);
@@ -247,25 +285,25 @@ html.lenis, html.lenis body {
 }
 
 .bg-pattern-top {
-  --mask: linear-gradient(180deg, rgba(227,233,53,0) 0%, rgba(227,233,53,1) 10%);
+  --mask: linear-gradient(180deg, rgba(227,233,53,0) 0%, rgba(227,233,53,1) 15%);
   -webkit-mask: var(--mask);
           mask: var(--mask);
 }
 
 .bg-pattern-bottom {
-  --mask: linear-gradient(0deg, rgba(227,233,53,0) 0%, rgba(227,233,53,1) 10%);
+  --mask: linear-gradient(0deg, rgba(227,233,53,0) 0%, rgba(227,233,53,1) 15%);
   -webkit-mask: var(--mask);
           mask: var(--mask);
 }
 
 .bg-pattern-left {
-  --mask: linear-gradient(90deg, rgba(227,233,53,0) 0%, rgba(227,233,53,1) 10%);
+  --mask: linear-gradient(90deg, rgba(227,233,53,0) 0%, rgba(227,233,53,1) 15%);
   -webkit-mask: var(--mask);
           mask: var(--mask);
 }
 
 .bg-pattern-right {
-  --mask: linear-gradient(-90deg, rgba(227,233,53,0) 0%, rgba(227,233,53,1) 10%);
+  --mask: linear-gradient(-90deg, rgba(227,233,53,0) 0%, rgba(227,233,53,1) 15%);
   -webkit-mask: var(--mask);
           mask: var(--mask);
 }

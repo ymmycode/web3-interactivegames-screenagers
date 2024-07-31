@@ -19,7 +19,8 @@ export default defineNuxtConfig({
   preset: 'node-server',
   srcDir: './src',
   modules: ['@nuxtjs/tailwindcss', '@vueuse/nuxt',
-  'nuxt-booster', "@nuxtjs/google-fonts", "@tresjs/nuxt",
+  'nuxt-booster',
+  "@nuxtjs/google-fonts", "@tresjs/nuxt",  '@morev/vue-transitions/nuxt',
   [
     '@pinia/nuxt',
     {
@@ -111,7 +112,7 @@ export default defineNuxtConfig({
     port: 3000,
     host: '0.0.0.0'
   },
-  ssr: false,
+  ssr: true,
   generate: { fallback: '404.html' },
   build: {
     extend (config, ctx) {

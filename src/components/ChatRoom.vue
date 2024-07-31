@@ -1,15 +1,11 @@
 <template>
-  <div class="fixed top-0 left-0 bg-black full-height w-full">
-    <div class="w-full h-full flex justify-start items-stretch max-w-screen-big-screen mx-auto">
-      <div class="w-full h-full rounded-3xl border border-primary-1 overflow-clip">
-        <div class="w-full h-full px-4 py-6 pb-12 flex flex-col gap-4">
-          <div class="relative h-full w-full max-h-[90%] rounded-3xl border border-primary-1 overflow-clip">
-            <LiveChat/>
-          </div>
-          <div class="py-2 px-1 border border-primary-1 rounded-3xl overflow-clip">
-            <FormText/>
-          </div>
-        </div>
+  <div class="w-full h-[100dvh] p-[2vw] top-0 left-0 container-ui-controller absolute z-10 bg-black">
+    <div class="relative w-full h-full box-player flex flex-col items-stretch py-[5vw] px-[4vw] gap-[4vw]">
+      <div class="w-full h-[70%] box-attack-button flex flex-col justify-center items-center gap-[8vw]">
+        <LiveChat/>
+      </div>
+      <div class="w-full h-[30%] box-chat flex flex-col justify-center items-center py-[2vw] gap-[2vw]">
+        <FormText/>
       </div>
     </div>
   </div>
