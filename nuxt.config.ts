@@ -18,19 +18,15 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   preset: 'node-server',
   srcDir: './src',
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@vueuse/nuxt',
-    [
+  modules: ['@nuxtjs/tailwindcss', '@vueuse/nuxt',
+  'nuxt-booster', "@nuxtjs/google-fonts", "@tresjs/nuxt",
+  [
     '@pinia/nuxt',
     {
       autoImports: ['defineStore', 'acceptHMRUpdate', 'useDayjs'],
       storesDirs: ['./src/stores/**'],
     },
-  ], 
-  'nuxt-booster', 
-  "@nuxtjs/google-fonts"
-],
+],],
 
   booster: {
     detection: {
@@ -54,7 +50,7 @@ export default defineNuxtConfig({
       component: '0%',
       asset: '0%'
     },
-    optimizePreloads: false,
+    optimizePreloads: true,
     disableNuxtFontaine: true,
     disableNuxtImage: true,
   },
@@ -115,7 +111,7 @@ export default defineNuxtConfig({
     port: 3000,
     host: '0.0.0.0'
   },
-  ssr: true,
+  ssr: false,
   generate: { fallback: '404.html' },
   build: {
     extend (config, ctx) {

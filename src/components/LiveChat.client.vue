@@ -21,7 +21,7 @@
 
 <script setup>
 import badwords from "indonesian-badwords";
-const { $ably } = useNuxtApp();
+const { $ably, $ablySpaces  } = useNuxtApp();
 const allItems = ref([])
 
 const { list, containerProps, wrapperProps, scrollTo } = useVirtualList(

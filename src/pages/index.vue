@@ -23,7 +23,7 @@ const { roomID } = storeToRefs(mainStore)
 
 // ably realtime
 const config = useRuntimeConfig()
-const { $ably } = useNuxtApp();
+const { $ably, $ablySpaces } = useNuxtApp();
 let ably = null
 let gameRoom = null
 const roomIDSync = computed(() => roomID.value)

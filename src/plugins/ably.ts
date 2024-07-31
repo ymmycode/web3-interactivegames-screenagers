@@ -1,3 +1,4 @@
+import Spaces from "@ably/spaces";
 import Ably from "ably";
 
 export default defineNuxtPlugin(() => {
@@ -5,6 +6,7 @@ export default defineNuxtPlugin(() => {
     return {
       provide: {
         ably: Ably,
+        ablySpaces: Spaces,
       },
     };
   }

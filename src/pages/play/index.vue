@@ -40,7 +40,7 @@ const { player } = storeToRefs(mainStore)
 const intro = ref(true)
 const config = useRuntimeConfig()
 const route = useRoute()
-const { $ably } = useNuxtApp();
+const { $ably, $ablySpaces  } = useNuxtApp();
 
 onMounted(async () => {
   nextTick(() => {

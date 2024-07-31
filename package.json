@@ -10,12 +10,16 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@ably/spaces": "^0.4.0",
     "@dicebear/collection": "^9.0.1",
     "@dicebear/core": "^9.0.1",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/typography": "^0.5.13",
+    "@tresjs/cientos": "^3.9.0",
+    "@tresjs/nuxt": "^3.0.2",
+    "@tresjs/post-processing": "^0.7.1",
     "@vueuse/core": "^10.11.0",
     "@vueuse/nuxt": "^10.11.0",
     "ably": "^2.3.0",

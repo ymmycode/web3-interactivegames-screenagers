@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-const { $ably } = useNuxtApp();
+const { $ably, $ablySpaces  } = useNuxtApp();
 const channel = $ably.channels.get('globalChatRoom')
 const typing = ref(false)
 

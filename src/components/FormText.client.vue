@@ -15,7 +15,7 @@
 import { createAvatar } from '@dicebear/core';
 import { botttsNeutral } from '@dicebear/collection';
 
-const { $ably } = useNuxtApp();
+const { $ably, $ablySpaces  } = useNuxtApp();
 const channel = $ably.channels.get('globalChatRoom');
 
 const character = ["Felix","Aneka"]

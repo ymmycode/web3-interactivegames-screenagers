@@ -1,7 +1,5 @@
 <template>
-  <div>
-
-  </div>
+  <div></div>
 </template>
 
 <script setup>
@@ -9,7 +7,7 @@ const mainStore = useMainStore()
 const { roomID } = storeToRefs(mainStore)
 
 // ably realtime
-const { $ably } = useNuxtApp();
+const { $ably, $ablySpaces  } = useNuxtApp();
 let gameRoom = null
 
 const roomIDSync = computed(() => roomID.value)
