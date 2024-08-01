@@ -1,7 +1,8 @@
 <template>
+  <!-- :value="`https://192.168.0.107:3000/play?room=${roomIDSync}`" -->
   <div>
     <QRCodeVue3
-      :value="`https://192.168.0.107:3000/play?room=${roomIDSync}`"
+      :value="`https://proto-multi-game.netlify.app/play?room=${roomIDSync}`"
       :qrOptions="{ typeNumber: 0, mode: 'Byte', errorCorrectionLevel: 'H' }"
       :imageOptions="{ imageSize: 0.4, }"
       image="/images/qr-logo.png"
