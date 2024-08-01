@@ -1,15 +1,22 @@
 <template>
-  <div v-if="allItems.length > 0 " class="w-full h-full">
-    <div v-bind="containerProps" class="!h-full" id="chats-content">
-      <div v-bind="wrapperProps" class="w-auto">
-        <div v-for="item in list" :key="item.index" class="p-5 flex gap-6 items-start justify-start flex-row text-white ">
-          <div class="text-white text-base md:text-2xl">{{ item.data.chat }}</div>
+  <div v-if="allItems.length > 0 " class="w-full box-live-coms relative z-1 py-[4vw] px-[3vw]">
+    <div v-bind="containerProps" id="chats-content" class="flex flex-col justify-end">
+      <div v-bind="wrapperProps" class="w-full h-full">
+        <div v-for="item in list" :key="item.index" class="relative cursor-pointer">
+          <div class="w-full">
+            <div class="box-text-container bg-primary-1 w-fit">
+              <span class="unbounded text-black text-chat-constant">{{ item.data.chat }}</span>
+            </div>
+            <div class="masking-text-container">
+              <div class="box-text-container-bottom"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div v-else class="w-full h-full">
-    <h1 class="text-primary-1 text-lg md:text-4xl py-8 px-5 unbounded tracking-wider">There is no chats going on <br>Come On Join!!!</h1>
+  <div v-else class="w-full h-full box-live-coms">
+    <h1 class="text-primary-1 text-[4vw] py-[4vw] px-5 unbounded tracking-wider">Chat with Us</h1>
   </div>
 </template>
 

@@ -171,6 +171,52 @@ html.lenis, html.lenis body {
           mask: var(--mask);
 }
 
+.box-container-coms {
+  position: relative;
+}
+.box-container-coms:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #e3e935;
+  clip-path: polygon(
+    0 0,
+    calc(100% - calc((100 / 1080) * 100vh)) 0,
+    100% calc((100 / 1080) * 100vh),
+    100% 100%,
+    0 100%,
+    0 0,
+    .3vw  .3vw ,
+    .3vw calc(100% - .3vw),
+    calc(100% - .3vw) calc(100% - .3vw),
+    calc(100% - .3vw) calc(calc((100 / 1080) * 100vh) + 0.1vh),
+    calc(100% - calc((100 / 1080) * 100vh) - 0.1vh) .3vw,
+    .3vw .3vw);
+}
+
+.box-live-coms {
+  position: relative;
+}
+.box-live-coms:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #e3e935;
+  clip-path: polygon(
+    0 0,
+    calc(100% - calc((80 / 1080) * 100vh)) 0,
+    100% calc((80 / 1080) * 100vh),
+    100% 100%,
+    0 100%,
+    0 0,
+    .3vw  .3vw ,
+    .3vw calc(100% - .3vw),
+    calc(100% - .3vw) calc(100% - .3vw),
+    calc(100% - .3vw) calc(calc((80 / 1080) * 100vh) + 0.1vh),
+    calc(100% - calc((80 / 1080) * 100vh) - 0.1vh) .3vw,
+    .3vw .3vw);
+}
+
 .text-base-constant {
   font-size: calc((22 / 1080) * 100vh);
   letter-spacing: calc((1 / 1080) * 100vh);
@@ -275,8 +321,19 @@ html.lenis, html.lenis body {
 // pattern
 .bg-box-pattern-1{
   background-color: #e3e93500;
-  opacity: .2;
-  background-image:  linear-gradient(#e3e935 calc((.6 / 1080) * 100vh), transparent calc((.6 / 1080) * 100vh)), linear-gradient(to right, #e3e935 calc((.6 / 1080) * 100vh), #fff0 calc((.6 / 1080) * 100vh));
+  opacity: .4;
+  background-image:  linear-gradient(#e3e935 calc((.85 / 1080) * 100vh), transparent calc((.85 / 1080) * 100vh)), linear-gradient(to right, #e3e935 calc((.85 / 1080) * 100vh), #fff0 calc((.85 / 1080) * 100vh));
+  background-size: calc((60 / 1080) * 100vh) calc((60 / 1080) * 100vh);
+
+  --mask: linear-gradient(-135deg,#0000 calc((140 / 1920) * 100vw) 0%,#000 10%);
+  -webkit-mask: var(--mask);
+          mask: var(--mask);
+}
+
+.bg-box-pattern-2{
+  background-color: #e3e93500;
+  opacity: .5;
+  background-image:  linear-gradient(#e3e935 calc((.85 / 1080) * 100vh), transparent calc((.85 / 1080) * 100vh)), linear-gradient(to right, #e3e935 calc((.85 / 1080) * 100vh), #fff0 calc((.85 / 1080) * 100vh));
   background-size: calc((60 / 1080) * 100vh) calc((60 / 1080) * 100vh);
 
   --mask: linear-gradient(-135deg,#0000 calc((140 / 1920) * 100vw) 0%,#000 10%);

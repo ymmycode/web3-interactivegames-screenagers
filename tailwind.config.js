@@ -12,6 +12,7 @@ export default {
     extend: {
       colors: {
         'primary-1': '#E3E935',
+        'primary-2': '#8CD26C',
       },
       screens: {
         'big-screen': '1441px',
