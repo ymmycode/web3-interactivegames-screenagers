@@ -1,15 +1,21 @@
 <template>
-  <div v-if="allItems.length > 0 " class="w-full box-live-coms relative z-1 py-[4vw] px-[3vw]">
-    <div v-bind="containerProps" id="chats-content" class="flex flex-col justify-end">
-      <div v-bind="wrapperProps" class="w-full h-full">
-        <div v-for="item in list" :key="item.index" class="relative cursor-pointer">
-          <div class="w-full">
-            <div class="box-text-container bg-primary-1 w-fit">
-              <span class="unbounded text-black text-chat-constant">{{ item.data.chat }}</span>
-            </div>
-            <div class="masking-text-container">
-              <div class="box-text-container-bottom"></div>
-            </div>
+  <div v-if="allItems.length > 0 " class="w-full h-full box-live-coms relative z-1">
+    <div class="relative w-full h-full flex flex-col justify-end masking-top-live-chat">
+      <div v-for="item in allItems" :key="item.clientId" class="relative cursor-pointer">
+        <div v-if="item.clientId == player.id"  class="w-full flex justify-end">
+          <div class="box-text-container-sender bg-primary-2 w-fit">
+            <span class="unbounded text-black text-chat-constant">{{ item.chat }}</span>
+          </div>
+          <div class="masking-text-container-mobile-sender">
+            <div class="box-text-container-bottom-mobile-sender"></div>
+          </div>
+        </div>
+        <div v-else class="w-full flex justify-start">
+          <div class="box-text-container bg-primary-1 w-fit">
+            <span class="unbounded text-black text-chat-constant">{{ item.chat }}</span>
+          </div>
+          <div class="masking-text-container-mobile">
+            <div class="box-text-container-bottom-mobile"></div>
           </div>
         </div>
       </div>
@@ -23,7 +29,7 @@
 <script setup>
 import badwords from "indonesian-badwords";
 const mainStore = useMainStore()
-const { roomID } = storeToRefs(mainStore)
+const { roomID, player } = storeToRefs(mainStore)
 
 // ably realtime
 const config = useRuntimeConfig()
@@ -31,14 +37,15 @@ const { $ably, $ablySpaces } = useNuxtApp();
 let ably = null
 let gameRoom = null
 const roomIDSync = computed(() => roomID.value)
+const playerData = computed(() => player.value)
 const allItems = ref([])
 
-const { list, containerProps, wrapperProps, scrollTo } = useVirtualList(
-  allItems,
-  {
-    itemHeight: 100,
-  },
-)
+// const { list, containerProps, wrapperProps, scrollTo } = useVirtualList(
+//   allItems,
+//   {
+//     itemHeight: 100,
+//   },
+// )
 
 const newMessage = ref("")
 const attachChannel = async () => {
@@ -65,24 +72,24 @@ onMounted(() => {
   })
 })
 
-const doubleScrollTo = () => {
-  const to1 = setTimeout(() => {
-    scrollTo(allItems.value.length - 1)
-    clearTimeout(to1)
+// const doubleScrollTo = () => {
+//   const to1 = setTimeout(() => {
+//     scrollTo(allItems.value.length - 1)
+//     clearTimeout(to1)
 
-    const to2 = setTimeout(() => {
-      scrollTo(allItems.value.length - 1)
-      clearTimeout(to2)
-    }, 200) 
-  }, 200)
-}
+//     const to2 = setTimeout(() => {
+//       scrollTo(allItems.value.length - 1)
+//       clearTimeout(to2)
+//     }, 200) 
+//   }, 200)
+// }
 
 watch(() => newMessage.value,
   (val) => {
     console.log(newMessage.value)
     newMessage.value.chat = badwords.censor(val.chat)
     allItems.value.push(newMessage.value)
-    doubleScrollTo()
+    // doubleScrollTo()
   }
 )
 

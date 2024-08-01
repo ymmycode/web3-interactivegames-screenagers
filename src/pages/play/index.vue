@@ -28,7 +28,7 @@
   </div>
 
   <TransitionFade>
-    <ChatRoom v-if="true"/>
+    <ChatRoom v-if="showComs" @closeComs="showComs = false"/>
   </TransitionFade>
 </template>
 
@@ -52,7 +52,7 @@ onMounted(async () => {
     const to = setTimeout(() => {
       intro.value = false
       clearTimeout(to)
-    }, 1000)
+    }, 500)
   })
 })
 
