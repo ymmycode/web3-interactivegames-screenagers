@@ -1,10 +1,10 @@
 <template>
-  <!-- <transition name="fade">
+  <transition name="fade">
     <div v-if="intro" class="fixed w-full h-full top-0 left-0 bg-black z-20 flex justify-center flex-col items-center text-primary-1">
       <h1 class="unbounded text-2xl tracking-wider">Welcome to The Game</h1>
       <h2 class="text-xl unbounded tracking-wider">Get Ready!</h2>
     </div>
-  </transition> -->
+  </transition>
 
   <div class="w-full h-[100dvh] p-[2vw] container-ui-controller">
     <div class="relative w-full h-full box-player flex flex-col items-stretch py-[5vw] px-[4vw] gap-[4vw]">
