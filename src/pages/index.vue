@@ -1,6 +1,6 @@
 <template>
   <main class="fixed top-0 left-0 full-height w-full">
-    <Background/>
+    <!-- <Background/> -->
     
     <div class="absolute w-full h-full z-1">
       <div class="container-ui">

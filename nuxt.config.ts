@@ -15,19 +15,26 @@ export default defineNuxtConfig({
       port: 3000
     }
   },
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   preset: 'node-server',
   srcDir: './src',
-  modules: ['@nuxtjs/tailwindcss', '@vueuse/nuxt',
-  'nuxt-booster',
-  "@nuxtjs/google-fonts", "@tresjs/nuxt",  '@morev/vue-transitions/nuxt',
-  [
-    '@pinia/nuxt',
-    {
-      autoImports: ['defineStore', 'acceptHMRUpdate', 'useDayjs'],
-      storesDirs: ['./src/stores/**'],
-    },
-],],
+  modules: [
+    '@nuxt/devtools',
+    '@nuxtjs/tailwindcss',
+    '@vueuse/nuxt',
+    'nuxt-booster',
+    "@nuxtjs/google-fonts",
+    "@tresjs/nuxt",
+    "@nuxt/icon",
+    '@morev/vue-transitions/nuxt',
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: ['defineStore', 'acceptHMRUpdate', 'useDayjs'],
+        storesDirs: ['./src/stores/**'],
+      },
+  ],
+  ],
 
   booster: {
     detection: {
@@ -67,6 +74,11 @@ export default defineNuxtConfig({
     base64: true,
     download: true,
   },
+
+  tres: {
+    devtools: true,
+  },
+  
   tailwindcss: {
     cssPath: ['~/assets/styles/main.scss', { injectPosition: 'first' }],
     configPath: 'tailwind.config',
