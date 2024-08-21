@@ -20,13 +20,13 @@ export default defineNuxtConfig({
   srcDir: './src',
   modules: [
     '@nuxt/devtools',
-    '@nuxtjs/tailwindcss',
-    '@vueuse/nuxt',
-    'nuxt-booster',
-    "@nuxtjs/google-fonts",
     "@tresjs/nuxt",
+    '@vueuse/nuxt',
     "@nuxt/icon",
     '@morev/vue-transitions/nuxt',
+    '@nuxtjs/tailwindcss',
+    'nuxt-booster',
+    "@nuxtjs/google-fonts",
     [
       '@pinia/nuxt',
       {
@@ -58,7 +58,7 @@ export default defineNuxtConfig({
       component: '0%',
       asset: '0%'
     },
-    optimizePreloads: true,
+    optimizeSSR: true,
     disableNuxtFontaine: true,
     disableNuxtImage: true,
   },

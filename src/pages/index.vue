@@ -33,27 +33,27 @@ const initGameplay = async () => {
   ably = new $ably.Realtime({
     key: config.app.ablyAPIKey,
   });
-  ably.connection.once('connected', () => {
-    gameRoom = ably.channels.get(`room-${roomIDSync.value}`);
-    gameRoom.presence.subscribe("enter", (player) => {
-      console.log('new player add to the team')
-    });
-    gameRoom.presence.subscribe("leave", (player) => {
-      console.log('someone leave')
-    });
+  // ably.connection.once('connected', () => {
+  //   gameRoom = ably.channels.get(`room-${roomIDSync.value}`);
+  //   gameRoom.presence.subscribe("enter", (player) => {
+  //     console.log('new player add to the team')
+  //   });
+  //   gameRoom.presence.subscribe("leave", (player) => {
+  //     console.log('someone leave')
+  //   });
 
-    gameRoom.presence.subscribe(async (presenceMessage) => {
-      const presenceSet = await gameRoom.presence.get();
+  //   gameRoom.presence.subscribe(async (presenceMessage) => {
+  //     const presenceSet = await gameRoom.presence.get();
 
-      if (presenceSet.length > 0) {
-        console.log('There are ' + presenceSet.length + ' players on this channel');
-        deviceConnected.value = presenceSet.length
-      } else {
-        console.log('There are ' + presenceSet.length + ' players on this channel');
-        deviceConnected.value = 0
-      }
-    });
-  })
+  //     if (presenceSet.length > 0) {
+  //       console.log('There are ' + presenceSet.length + ' players on this channel');
+  //       deviceConnected.value = presenceSet.length
+  //     } else {
+  //       console.log('There are ' + presenceSet.length + ' players on this channel');
+  //       deviceConnected.value = 0
+  //     }
+  //   });
+  // })
 }
 
 onMounted(() => {

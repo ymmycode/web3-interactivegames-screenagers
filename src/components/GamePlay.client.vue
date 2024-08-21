@@ -1,24 +1,6 @@
 <template>
   <TresCanvas :bind="gl" class="gameplay-canvas">
-    <TresPerspectiveCamera :position="[0, 0, 20]" />
-    <OrbitControls
-      ref="orbitControlsRef"
-      :autoRotate="true"
-    />
-
-    <Plane
-      ref="enemyPlane" 
-      :args="[10, 10, 10, 10]"
-      :rotation="[0, 0, Math.PI / 2]"
-      :position="[0, 0, 0]"
-    >
-      <TresMeshBasicMaterial
-        color="#003f00"
-      />
-    </Plane>
-
-    <Crosshair/>
-    
+    <Experience />
   </TresCanvas>
 </template>
 
@@ -34,25 +16,8 @@ const gl = {
   alpha: true,
   clearColor: "#000000",
   depth: false, 
-  renderMode: 'always'
+  renderMode: 'on-demand'
 }
-
-// orbit controls
-const orbitControlsRef = shallowRef()
-console.log(orbitControlsRef.value)
-
-const players = shallowRef([
-  {
-    id: 1,
-    name: 'Player 1',
-    position: {
-      x: 0,
-      y: 0,
-      z: 0
-    },
-    color: '#0000ff'
-  }
-])
 
 // ably realtime
 // const { $ably, $ablySpaces  } = useNuxtApp();
@@ -70,6 +35,12 @@ const players = shallowRef([
 //     })
 //   }
 // )
+
+onMounted(() => {
+  nextTick(() => {
+  })
+})
+
 </script>
 
 <style lang="scss" scoped>
