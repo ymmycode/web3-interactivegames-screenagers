@@ -26,14 +26,6 @@
 },
 {
 	"filename": "attacked_004",
-	"frame": {"x":1500,"y":0,"w":500,"h":500},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":500},
-	"sourceSize": {"w":500,"h":500}
-},
-{
-	"filename": "attacked_005",
 	"frame": {"x":0,"y":500,"w":500,"h":500},
 	"rotated": false,
 	"trimmed": false,
@@ -58,14 +50,6 @@
 },
 {
 	"filename": "idle_003",
-	"frame": {"x":1500,"y":500,"w":500,"h":500},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":500},
-	"sourceSize": {"w":500,"h":500}
-},
-{
-	"filename": "idle_004",
 	"frame": {"x":0,"y":1000,"w":500,"h":500},
 	"rotated": false,
 	"trimmed": false,
@@ -73,8 +57,16 @@
 	"sourceSize": {"w":500,"h":500}
 },
 {
-	"filename": "idle_005",
+	"filename": "idle_004",
 	"frame": {"x":500,"y":1000,"w":500,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":500},
+	"sourceSize": {"w":500,"h":500}
+},
+{
+	"filename": "idle_005",
+	"frame": {"x":1000,"y":1000,"w":500,"h":500},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":500},
@@ -85,8 +77,8 @@
 	"version": "1.0",
 	"image": "boss-animation.png",
 	"format": "RGBA8888",
-	"size": {"w":2000,"h":1500},
+	"size": {"w":1500,"h":1500},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:962b43d3b7ab240ef27f9ac143a6b939:8263f55fb082e13a5a9a6804b0c57aa1:dafe7652f6e7e38926273bb6a0f713fa$"
+	"smartupdate": "$TexturePacker:SmartUpdate:bba1c5565d744c368f5f5aee3c5cf988:50a8e82adab1b4181e673b510b0a6b91:dafe7652f6e7e38926273bb6a0f713fa$"
 }
 }

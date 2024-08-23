@@ -4,11 +4,13 @@ export const useMainStore = defineStore({
   id: 'main-store',
   state: () => {
     return {
+      health: 100,
+      stepHealth: 1,
       receivedData: null,
       roomID: null, 
       gameOver: false, 
       timesOut :false,
-      score: 0,
+      state: 'idle',
       player: {},
     };
   },
@@ -38,6 +40,31 @@ export const useMainStore = defineStore({
     resetPlayerID () {
       this.player.id = {}
     },
+
+    setHealth (payload) {
+      this.health = payload.health
+      this.stepHealth = payload.step
+    },
+
+    decreaseHealth (payload) {
+      this.health -= payload
+    },
+
+    setIdleState () {
+      this.state = 'idle'
+    },
+
+    setStartGameState () {
+      this.state = 'start'
+    },
+
+    setGameOverState () {
+      this.state = 'over'
+    },
+
+    setWinState () {
+      this.state = 'won'
+    }
 
   },
 });

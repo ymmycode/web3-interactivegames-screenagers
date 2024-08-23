@@ -1,7 +1,9 @@
 <template>
-  <TresCanvas :bind="gl" class="gameplay-canvas">
+  <TresCanvas v-bind="gl" class="gameplay-canvas">
     <Experience />
   </TresCanvas>
+
+  <HealthBar/>
 </template>
 
 <script setup>
@@ -14,7 +16,6 @@ const gl = {
   shadow: false, 
   antialias: true,
   alpha: true,
-  clearColor: "#000000",
   depth: false, 
   renderMode: 'on-demand'
 }
