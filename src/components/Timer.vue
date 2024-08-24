@@ -73,6 +73,11 @@ const stopTimer = () => {
   clearInterval(interval)
 }
 
+const stopTimerWon = () => {
+  timeLimitReached.value = false
+  clearInterval(interval)
+}
+
 const idlesState = () => {
   timeLimitReached.value = false
   minutesTime.value = minutesInput.value
@@ -92,6 +97,8 @@ watch(() => state.value, (val) => {
     startTimer()
   } else if (val === 'over') {
     stopTimer()
+  } else if (val === 'won') {
+    stopTimerWon()
   } else if (val === 'idle') {
     idlesState()
   }

@@ -86,6 +86,28 @@ html.lenis, html.lenis body {
   z-index: 2;
 }
 
+// health bar
+.full-health {
+  background: rgb(99,179,92);
+  background: linear-gradient(180deg, rgba(99,179,92,1) 0%, rgba(87,167,88,1) 50%, rgba(65,146,80,1) 50%, rgba(65,146,80,1) 77%, rgba(49,106,65,1) 77%, rgba(49,106,65,1) 100%);
+}
+
+.mid-health {
+  background: rgb(193,198,70);
+  background: linear-gradient(180deg, rgba(193,198,70,1) 0%, rgba(193,198,70,1) 50%, rgba(141,146,65,1) 50%, rgba(141,146,65,1) 77%, rgba(96,106,49,1) 77%, rgba(96,106,49,1) 100%);
+}
+
+.low-health {
+  background: rgb(182,76,76);
+  background: linear-gradient(180deg, rgba(182,76,76,1) 0%, rgba(182,76,76,1) 50%, rgba(146,72,65,1) 50%, rgba(146,72,65,1) 77%, rgba(106,49,49,1) 77%, rgba(106,49,49,1) 100%);
+}
+
+.heartbeat-position {
+  top: calc((-29 / 1080) * 100vh);
+  left: calc((-100 / 1920) * 100vh);
+}
+
+
 // chat box settings
 .box {
   position: relative;
@@ -475,4 +497,22 @@ html.lenis, html.lenis body {
   --mask: linear-gradient(-90deg, rgba(227,233,53,0) 0%, rgba(227,233,53,1) 15%);
   -webkit-mask: var(--mask);
           mask: var(--mask);
+}
+
+// animation
+
+.heartbeat {
+  animation: heartbeat 1s infinite ease-in-out;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

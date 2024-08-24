@@ -9,7 +9,7 @@
   <div class="w-full h-[100dvh] p-[2vw] container-ui-controller">
     <div class="relative w-full h-full box-player flex flex-col items-stretch py-[5vw] px-[4vw] gap-[4vw]">
       <div class="w-full h-[70%] box-attack-button flex flex-col justify-center items-center gap-[8vw]">
-        <div class="unbounded text-2xl text-primary-1 tracking-wider">Aim at The Enemy</div>
+        <div class="unbounded text-2xl text-primary-1 tracking-wider">Attack The Boss</div>
         <button class="disable-dbl-tap-zoom button-attack bg-primary-1 flex justify-center items-center box-radial-button">
           <div class="unbounded text-2xl text-center origin-center font-bold">ATTACK</div>
         </button>
@@ -40,7 +40,7 @@ definePageMeta({
 });
 
 const mainStore = useMainStore()
-const { player } = storeToRefs(mainStore)
+const { player, state } = storeToRefs(mainStore)
 const intro = ref(true)
 const config = useRuntimeConfig()
 const route = useRoute()
@@ -84,4 +84,16 @@ onBeforeUnmount(() => {
     gameRoom?.presence.leave()
   })
 })
+
+watch(() => state.value,
+  (val) => {
+    // if(val === 'over') {
+    //   gameRoom?.presence.leave()
+    // }
+
+    console.log(val)
+  }
+)
+
+watch
 </script>

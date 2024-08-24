@@ -59,6 +59,7 @@ const initGameplay = async () => {
 onMounted(() => {
   nextTick(async () => {
     await initGameplay()
+    mainStore.setIdleState()
   })
 }) 
 </script>
