@@ -98,15 +98,14 @@ onMounted(() => {
 })
 
 watch(() => state.value, (val) => {
-  console.log(val)
   if (val === 'start') {
     startTimer()
   } else if (val === 'over') {
     stopTimer()
+    // setTimeout(idlesState(), 10000)
   } else if (val === 'won') {
     stopTimerWon()
-  } else if (val === 'idle') {
-    idlesState()
+    // setTimeout(idlesState(), 10000)
   }
 })
 

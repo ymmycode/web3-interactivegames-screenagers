@@ -20,19 +20,41 @@
 </template>
 
 <script setup>
-const healthBarRef = ref()
+
 const mainStore = useMainStore()
+const { roomID, player } = storeToRefs(mainStore)
+
+// ably realtime
+const config = useRuntimeConfig()
+const { $ably, $ablySpaces } = useNuxtApp();
+let ably = null
+let gameRoom = null
+const roomIDSync = computed(() => roomID.value)
+const newMessage = ref({})
+
+const healthBarRef = ref()
 const { health, stepHealth, state } = storeToRefs(mainStore)
 const bossHealthStatus = computed(() => health.value)
 const healthDecreaseStep = computed(() => stepHealth.value)
 const totalHealth = computed(() => bossHealthStatus.value / healthDecreaseStep.value)
 
-// mainStore.decreaseHealth(1)
-// healthBarRef.value.style.width = `${totalHealth.value}%`
-// mainStore.setStartGameState()
+onMounted(() => {
+  nextTick(async () => {
+    ably = new $ably.Realtime({
+      key: config.app.ablyAPIKey,
+    });
+    gameRoom = ably.channels.get(`room-${roomIDSync.value}`);
+    gameRoom.attach()
+    await gameRoom.subscribe((message) => {
+      newMessage.value = message.data
+      mainStore.decreaseHealth(newMessage.value.hitPoint)
+    });
+  })
+})
 
 watch(() => totalHealth.value,
   (val) => {
+    healthBarRef.value.style.width = `${val}%`
     if(val <= 0) {
       mainStore.setWinState()
     }

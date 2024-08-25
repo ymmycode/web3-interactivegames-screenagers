@@ -26,6 +26,14 @@
 },
 {
 	"filename": "attacked_004",
+	"frame": {"x":1500,"y":0,"w":500,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":500},
+	"sourceSize": {"w":500,"h":500}
+},
+{
+	"filename": "destroyed_000",
 	"frame": {"x":0,"y":500,"w":500,"h":500},
 	"rotated": false,
 	"trimmed": false,
@@ -33,7 +41,7 @@
 	"sourceSize": {"w":500,"h":500}
 },
 {
-	"filename": "idle_001",
+	"filename": "destroyed_001",
 	"frame": {"x":500,"y":500,"w":500,"h":500},
 	"rotated": false,
 	"trimmed": false,
@@ -41,7 +49,7 @@
 	"sourceSize": {"w":500,"h":500}
 },
 {
-	"filename": "idle_002",
+	"filename": "destroyed_002",
 	"frame": {"x":1000,"y":500,"w":500,"h":500},
 	"rotated": false,
 	"trimmed": false,
@@ -49,7 +57,15 @@
 	"sourceSize": {"w":500,"h":500}
 },
 {
-	"filename": "idle_003",
+	"filename": "destroyed_003",
+	"frame": {"x":1500,"y":500,"w":500,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":500},
+	"sourceSize": {"w":500,"h":500}
+},
+{
+	"filename": "destroyed_004",
 	"frame": {"x":0,"y":1000,"w":500,"h":500},
 	"rotated": false,
 	"trimmed": false,
@@ -57,7 +73,7 @@
 	"sourceSize": {"w":500,"h":500}
 },
 {
-	"filename": "idle_004",
+	"filename": "destroyed_005",
 	"frame": {"x":500,"y":1000,"w":500,"h":500},
 	"rotated": false,
 	"trimmed": false,
@@ -65,8 +81,40 @@
 	"sourceSize": {"w":500,"h":500}
 },
 {
-	"filename": "idle_005",
+	"filename": "idle_001",
 	"frame": {"x":1000,"y":1000,"w":500,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":500},
+	"sourceSize": {"w":500,"h":500}
+},
+{
+	"filename": "idle_002",
+	"frame": {"x":1500,"y":1000,"w":500,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":500},
+	"sourceSize": {"w":500,"h":500}
+},
+{
+	"filename": "idle_003",
+	"frame": {"x":0,"y":1500,"w":500,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":500},
+	"sourceSize": {"w":500,"h":500}
+},
+{
+	"filename": "idle_004",
+	"frame": {"x":500,"y":1500,"w":500,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":500},
+	"sourceSize": {"w":500,"h":500}
+},
+{
+	"filename": "idle_005",
+	"frame": {"x":1000,"y":1500,"w":500,"h":500},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":500},
@@ -77,8 +125,8 @@
 	"version": "1.0",
 	"image": "boss-animation.png",
 	"format": "RGBA8888",
-	"size": {"w":1500,"h":1500},
+	"size": {"w":2000,"h":2000},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:bba1c5565d744c368f5f5aee3c5cf988:50a8e82adab1b4181e673b510b0a6b91:dafe7652f6e7e38926273bb6a0f713fa$"
+	"smartupdate": "$TexturePacker:SmartUpdate:c75539af54e42986f91fa10a423589a2:d6cfea1343d20c4f474b0755ab844d17:dafe7652f6e7e38926273bb6a0f713fa$"
 }
 }

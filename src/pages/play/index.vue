@@ -10,7 +10,7 @@
     <div class="relative w-full h-full box-player flex flex-col items-stretch py-[5vw] px-[4vw] gap-[4vw]">
       <div class="w-full h-[70%] box-attack-button flex flex-col justify-center items-center gap-[8vw]">
         <div class="unbounded text-2xl text-primary-1 tracking-wider">Attack The Boss</div>
-        <button class="disable-dbl-tap-zoom button-attack bg-primary-1 flex justify-center items-center box-radial-button">
+        <button ref="attackButton" @click="attackPub" class="disable-dbl-tap-zoom button-attack bg-primary-1 flex justify-center items-center box-radial-button">
           <div class="unbounded text-2xl text-center origin-center font-bold">ATTACK</div>
         </button>
       </div>
@@ -40,12 +40,13 @@ definePageMeta({
 });
 
 const mainStore = useMainStore()
-const { player, state } = storeToRefs(mainStore)
+const { player, state, health } = storeToRefs(mainStore)
 const intro = ref(true)
 const config = useRuntimeConfig()
 const route = useRoute()
 const { $ably, $ablySpaces  } = useNuxtApp();
 const showComs = ref(false)
+const attackButton = ref()
 
 onMounted(async () => {
   nextTick(() => {
@@ -62,6 +63,24 @@ let gameRoom = null
 const roomIDSync = computed(() => route.query.room)
 const playerID = computed(() => player.value.id)
 const id = playerID.value ? playerID.value : mainStore.setPlayerID(MakeId(6))
+
+const sendHit = async (command) => {
+  await gameRoom.publish({
+    data: {
+      hitPoint: 1,
+    }
+  })
+}
+
+const hitEnemy = () => {
+  attackButton.value.disabled=true;
+  setTimeout(() => {attackButton.value.disabled=false},500);
+  sendHit()
+}
+
+const attackPub = () => {
+  hitEnemy()
+} 
 
 onMounted(() => {
   
@@ -88,6 +107,16 @@ onBeforeUnmount(() => {
 watch(() => state.value,
   (val) => {
     // if(val === 'over') {
+    //   gameRoom?.presence.leave()
+    // }
+
+    console.log(val)
+  }
+)
+
+watch(() => health.value,
+  (val) => {
+    // if(val <= 0) {
     //   gameRoom?.presence.leave()
     // }
 
