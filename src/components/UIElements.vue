@@ -27,7 +27,7 @@ const changeStateStatusWindow = () => {
   const timeout = setTimeout(() => {
     stateStatusWindowShow.value = false
     clearTimeout(timeout)
-  }, 1000)
+  }, 2000)
 }
 
 watch(() => state.value,

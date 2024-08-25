@@ -9,13 +9,14 @@
       :center="[0.5, 0.5]"
       :scale="[3.5, 3.5]"
       :position="[0,-1, 0]"
-      @pointer-down="attackedAnimation"
-      @pointer-up="idleAnimation"
     />
   </Suspense>
 </template>
 
 <script setup>
+// @pointer-down="attackedAnimation"
+// @pointer-up="idleAnimation"
+
 const animationsProps = ref({
   animations: [
     'idle',

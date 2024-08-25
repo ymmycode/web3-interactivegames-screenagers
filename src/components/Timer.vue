@@ -71,6 +71,11 @@ const stopTimer = () => {
   minutesString.value = String(minutesTime.value).padStart(2, '0')
   secondsString.value = "0".padStart(2, '0')
   clearInterval(interval)
+
+  const to = setTimeout(() => {
+    idlesState()
+    clearTimeout(to)
+  }, 10000)
 }
 
 const stopTimerWon = () => {
@@ -85,6 +90,7 @@ const idlesState = () => {
   secondsString.value = "0".padStart(2, '0')
   mainStore.setHealth({health: 100, step: 1})
   interval && clearInterval(interval)
+  mainStore.setIdleState()
 }
 
 onMounted(() => {

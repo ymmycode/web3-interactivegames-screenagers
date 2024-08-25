@@ -62,4 +62,14 @@ onMounted(() => {
     mainStore.setIdleState()
   })
 }) 
+
+watch(() => deviceConnected.value,
+  (val) => {
+    if (val > 0) {
+      mainStore.setStartGameState()
+    } else {
+      mainStore.setIdleState()
+    }
+  }
+)
 </script>
