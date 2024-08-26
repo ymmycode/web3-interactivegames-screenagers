@@ -57,6 +57,12 @@ definePageMeta({
   layout: 'client-layout',
 });
 
+useHead({
+  meta: [
+    { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no' }
+  ]
+})
+
 const mainStore = useMainStore()
 const { player, state, health } = storeToRefs(mainStore)
 const intro = ref(true)
@@ -104,7 +110,8 @@ const hitEnemy = () => {
   sendHit()
 }
 
-const attackPub = () => {
+const attackPub = (e) => {
+  e.preventDefault()
   hitEnemy()
 }
 
