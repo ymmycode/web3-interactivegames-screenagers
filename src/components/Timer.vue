@@ -14,7 +14,12 @@
 
 <script setup>
 const mainStore = useMainStore()
-const { state } = storeToRefs(mainStore)
+const { health, stepHealth, state } = storeToRefs(mainStore)
+
+const bossHealthStatus = computed(() => health.value)
+const healthDecreaseStep = computed(() => stepHealth.value)
+const totalHealth = computed(() => bossHealthStatus.value / healthDecreaseStep.value)
+const canAttack = ref(true)
 
 const minutesInput = ref(1)
 const minutesTime = ref(1)
@@ -42,8 +47,12 @@ const timerInterval = () => {
     
     minutesTime.value = minutesInput.value + minutes
     secondsTime.value = 60 + seconds
-    console.log(minutesTime.value, secondsTime.value)
-    if(minutesTime.value === -1 && secondsTime.value === 59) {
+    if((minutesTime.value >= -1 && secondsTime.value >= 59) && totalHealth.value < 1) {
+      minutesString.value = String(minutesInput.value).padStart(2, '0')
+      secondsString.value = "0".padStart(2, '0')
+      mainStore.setWinState()
+    }
+    else if((minutesTime.value === -1 && secondsTime.value === 59) && totalHealth.value > 1) {
       minutesString.value = String(minutesInput.value).padStart(2, '0')
       secondsString.value = "0".padStart(2, '0')
       mainStore.setGameOverState()
@@ -81,6 +90,11 @@ const stopTimer = () => {
 const stopTimerWon = () => {
   timeLimitReached.value = false
   clearInterval(interval)
+
+  const to = setTimeout(() => {
+    idlesState()
+    clearTimeout(to)
+  }, 10000)
 }
 
 const idlesState = () => {
@@ -88,7 +102,7 @@ const idlesState = () => {
   minutesTime.value = minutesInput.value
   minutesString.value = String(minutesTime.value).padStart(2, '0')
   secondsString.value = "0".padStart(2, '0')
-  mainStore.setHealth({health: 100, step: 1})
+  mainStore.setHealth({health: 200, step: 2})
   interval && clearInterval(interval)
   mainStore.setIdleState()
 }
@@ -98,14 +112,16 @@ onMounted(() => {
 })
 
 watch(() => state.value, (val) => {
+  if (val === 'idle') {
+    idlesState()
+  }
+
   if (val === 'start') {
     startTimer()
   } else if (val === 'over') {
     stopTimer()
-    // setTimeout(idlesState(), 10000)
   } else if (val === 'won') {
     stopTimerWon()
-    // setTimeout(idlesState(), 10000)
   }
 })
 

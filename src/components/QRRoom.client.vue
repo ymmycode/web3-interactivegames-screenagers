@@ -1,5 +1,6 @@
 <template>
   <!-- :value="`https://192.168.0.107:3000/play?room=${roomIDSync}`" -->
+  <!-- :value="`https://proto-multi-game.netlify.app/play?room=${roomIDSync}`" -->
   <div class="absolute bottom-0 right-0 w-fit z-1">
     <QRCodeVue3
       :value="`https://proto-multi-game.netlify.app/play?room=${roomIDSync}`"

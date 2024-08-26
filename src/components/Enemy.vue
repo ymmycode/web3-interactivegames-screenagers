@@ -19,13 +19,7 @@ const { health, stepHealth, state } = storeToRefs(mainStore)
 const bossHealthStatus = computed(() => health.value)
 const healthDecreaseStep = computed(() => stepHealth.value)
 const totalHealth = computed(() => bossHealthStatus.value / healthDecreaseStep.value)
-
-// @pointer-down="attackedAnimation"
-// @pointer-up="idleAnimation"
-
-// 'idle', 5
-// 'attacked' 12 
-// 'destroyed' 5
+const canAttack = ref(true)
 
 const animationsProps = ref({
   animations: ['idle'],
@@ -33,19 +27,34 @@ const animationsProps = ref({
   loop: true
 })
 
+const resetAnimationProps = () => {
+  animationsProps.value.animations[0] = 'idle'
+  animationsProps.value.fps[0] = 5
+  animationsProps.value.loop = true
+}
+
+let idleAnimationTimeout
 const attackedAnimation = async () => {
   animationsProps.value.animations[0] = 'attacked'
-    animationsProps.value.fps[0] = 12
-    animationsProps.value.loop = true
+  animationsProps.value.fps[0] = 12
+  animationsProps.value.loop = true
 
-  setTimeout(() => {
-    animationsProps.value.animations[0] = 'idle'
-    animationsProps.value.fps[0] = 5
-    animationsProps.value.loop = true
+  idleAnimationTimeout = setTimeout(() => {
+    if(state.value === 'won') {
+      animationsProps.value.animations[0] = 'destroyed'
+      animationsProps.value.fps[0] = 5
+      animationsProps.value.loop = false
+    } else {
+      animationsProps.value.animations[0] = 'idle'
+      animationsProps.value.fps[0] = 5
+      animationsProps.value.loop = true
+    }
+
   }, 1000)
 }
 
 const destroyedAnimation = async () => {
+  clearTimeout(idleAnimationTimeout)
   animationsProps.value.animations[0] = 'destroyed'
   animationsProps.value.fps[0] = 5
   animationsProps.value.loop = false
@@ -55,7 +64,7 @@ const { roomID, player } = storeToRefs(mainStore)
 
 // ably realtime
 const config = useRuntimeConfig()
-const { $ably, $ablySpaces } = useNuxtApp();
+const { $ably } = useNuxtApp();
 let ably = null
 let gameRoom = null
 const roomIDSync = computed(() => roomID.value)
@@ -69,7 +78,7 @@ onMounted(() => {
     gameRoom = ably.channels.get(`room-${roomIDSync.value}`);
     gameRoom.attach()
     await gameRoom.subscribe((message) => {
-      if(!totalHealth < 1){
+      if(totalHealth.value > 0 && canAttack.value) {
         attackedAnimation()
       }
     });
@@ -80,6 +89,26 @@ watch(() => totalHealth.value,
   (val) => {
     if (val < 1) {
       destroyedAnimation()
+    }
+  }
+)
+
+watch(() => state.value,
+  (val) => {
+    if(val === 'idle') {
+      resetAnimationProps()
+    }
+
+    if(val === 'start') {
+      canAttack.value = true
+    }
+
+    if(val === 'over') {
+      canAttack.value = false
+    }
+
+    if(val === 'won') {
+      canAttack.value = false
     }
   }
 )

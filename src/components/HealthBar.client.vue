@@ -26,7 +26,7 @@ const { roomID, player } = storeToRefs(mainStore)
 
 // ably realtime
 const config = useRuntimeConfig()
-const { $ably, $ablySpaces } = useNuxtApp();
+const { $ably } = useNuxtApp();
 let ably = null
 let gameRoom = null
 const roomIDSync = computed(() => roomID.value)
@@ -37,6 +37,15 @@ const { health, stepHealth, state } = storeToRefs(mainStore)
 const bossHealthStatus = computed(() => health.value)
 const healthDecreaseStep = computed(() => stepHealth.value)
 const totalHealth = computed(() => bossHealthStatus.value / healthDecreaseStep.value)
+const canAttack = ref(true)
+
+const sendState = async (command) => {
+  await gameRoom.publish({
+    data: {
+      state: command,
+    }
+  })
+}
 
 onMounted(() => {
   nextTick(async () => {
@@ -46,8 +55,10 @@ onMounted(() => {
     gameRoom = ably.channels.get(`room-${roomIDSync.value}`);
     gameRoom.attach()
     await gameRoom.subscribe((message) => {
-      newMessage.value = message.data
-      mainStore.decreaseHealth(newMessage.value.hitPoint)
+      if(!totalHealth.value < 1 && canAttack.value) {
+        newMessage.value = message.data
+        mainStore.decreaseHealth(newMessage.value.hitPoint)
+      }
     });
   })
 })
@@ -57,6 +68,24 @@ watch(() => totalHealth.value,
     healthBarRef.value.style.width = `${val}%`
     if(val <= 0) {
       mainStore.setWinState()
+    }
+  }
+)
+
+watch(() => state.value,
+  (val) => {
+    if(val === 'start') {
+      canAttack.value = true
+    }
+
+    if(val === 'over') {
+      canAttack.value = false
+      sendState('over')
+    }
+
+    if(val === 'won') {
+      canAttack.value = false
+      sendState('won')
     }
   }
 )

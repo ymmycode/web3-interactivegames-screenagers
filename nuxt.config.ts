@@ -114,6 +114,16 @@ export default defineNuxtConfig({
       ssr: false,
       mode: 'client',
     },
+    {
+      src: '~/plugins/rive.ts',
+      ssr: false,
+      mode: 'client',
+    },
+    {
+      src: '~/plugins/fireworks.ts',
+      ssr: false,
+      mode: 'client',
+    },
     // {
     //   src: '~/plugins/lenis.ts',
     //   ssr: false,

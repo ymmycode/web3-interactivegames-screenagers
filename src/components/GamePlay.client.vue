@@ -21,7 +21,7 @@ const gl = {
 }
 
 // ably realtime
-// const { $ably, $ablySpaces  } = useNuxtApp();
+// const { $ably  } = useNuxtApp();
 // let gameRoom = null
 
 // const roomIDSync = computed(() => roomID.value)
