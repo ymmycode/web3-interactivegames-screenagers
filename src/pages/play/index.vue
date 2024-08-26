@@ -29,12 +29,12 @@
       <div class="w-full h-[70%] box-attack-button flex flex-col justify-center items-center gap-[8vw]">
         <div class="unbounded text-2xl text-primary-1 tracking-wider">Attack The Boss</div>
         <button ref="attackButton" @click.prevent="attackPub" class="disable-dbl-tap-zoom button-attack bg-primary-1 flex justify-center items-center box-radial-button">
-          <div class="unbounded text-2xl text-center origin-center font-bold">ATTACK</div>
+          <div class="disable-dbl-tap-zoom unbounded text-2xl text-center origin-center font-bold">ATTACK</div>
         </button>
       </div>
       <div class="w-full h-[30%] box-chat flex flex-col justify-center items-center py-[2vw] gap-[2vw]">
         <button @click.prevent="showComs = !showComs" class="disable-dbl-tap-zoom button-chat w-full bg-primary-1 flex justify-center items-center box-radial-button-small">
-          <div class="unbounded text-2xl text-center origin-center font-bold text-black p-[1vw]">
+          <div class="disable-dbl-tap-zoom unbounded text-2xl text-center origin-center font-bold text-black p-[1vw]">
             <svg class="max-w-[8vw] w-full h-auto" viewBox="0 0 100 88" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M91 0H8L0 8V87.5H3.04054L22.5 75H91L100 66V9L91 0Z" fill="currentColor "/>
             </svg>
