@@ -103,7 +103,7 @@ const newMessage = ref({})
 const sendHit = async (command) => {
   await gameRoom.publish({
     data: {
-      hitPoint: 1,
+      hitPoint: 2,
     }
   })
 }
