@@ -1,5 +1,5 @@
 <template>
-  <div v-if="state == 'won'" class="absolute fireworks top-0 left-0 w-full h-full z-1"></div>
+  <div v-if="state == 'won'" class="absolute fireworks top-0 left-0 w-full h-full z-20"></div>
   <div class="absolute w-full h-full top-0 left-0 bg-black bg-opacity-70 z-10 flex justify-center items-center">
     <div class="text-score-constant unbounded font-bold text-primary-1 !tracking-widest opacity-0 -translate-y-[2vh] uppercase transition-[transform,opacity] duration-500"
     :class="[
