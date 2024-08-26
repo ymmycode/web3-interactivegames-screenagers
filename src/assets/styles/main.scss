@@ -14,7 +14,7 @@
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: initial;
-  touch-action: manipulation;
+  touch-action: none;
 }
 
 .unbounded {
@@ -450,7 +450,7 @@ html.lenis, html.lenis body {
 }
 
 .disable-dbl-tap-zoom {
-  touch-action: manipulation;
+  touch-action: none;
 }
 
 // pattern
