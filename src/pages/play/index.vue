@@ -28,7 +28,7 @@
     <div class="relative w-full h-full box-player flex flex-col items-stretch py-[5vw] px-[4vw] gap-[4vw]">
       <div class="w-full h-[70%] box-attack-button flex flex-col justify-center items-center gap-[8vw]">
         <div class="unbounded text-2xl text-primary-1 tracking-wider">Attack The Boss</div>
-        <button ref="attackButton" @click.prevent="attackPub" class="disable-dbl-tap-zoom button-attack bg-primary-1 flex justify-center items-center box-radial-button">
+        <button ref="attackButton" @click.prevent="attackPub" @touchstart="disableZoom" class="disable-dbl-tap-zoom button-attack bg-primary-1 flex justify-center items-center box-radial-button">
           <div class="disable-dbl-tap-zoom unbounded text-2xl text-center origin-center font-bold">ATTACK</div>
         </button>
       </div>
@@ -77,6 +77,10 @@ const showButton = ref(false)
 
 const refreshPage = () => {
   location.reload();
+}
+
+const disableZoom = (e) => {
+  e.preventDefault();
 }
 
 onMounted(async () => {
