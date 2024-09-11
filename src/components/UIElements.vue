@@ -1,5 +1,6 @@
 <template>
-  <BackgroundPattern/>
+  <!-- <BackgroundPattern/> -->
+  <BackgroundCity/>
   <LazyConnectedDevice :connected-device="props.connectedDevice" class="absolute bottom-[0.5vh] left-[1vh] z-1"/>
   <Timer class="absolute top-[0.8vh] left-[1vh] z-1"/>
   <GameLiveChat class="absolute bottom-[50vh] translate-y-[45vh] left-[1vh] z-1"/>

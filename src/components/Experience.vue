@@ -5,9 +5,14 @@
   />
   <!-- <OrbitControls /> -->
   
-  <Enemy/>
+  
+  <Suspense>
+    <Enemy/>
+  </Suspense>
 
-  <!-- <Crosshair/> -->
+  <!-- <Suspense>
+    <BackgroundSprite/>
+  </Suspense> -->
 
 </template>
 
@@ -19,7 +24,3 @@ const { camera, renderer, scene } = useTresContext()
 const { onBeforeRender, pause, resume } = useLoop()
 
 </script>
-
-<style lang="scss" scoped>
-
-</style>

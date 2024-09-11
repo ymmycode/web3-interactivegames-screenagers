@@ -1,16 +1,14 @@
 <template>
-  <Suspense>
-    <AnimatedSprite
-      image="/boss-animation.png"
-      atlas="/boss-animation.json"
-      :animation="animationsProps.animations[0]"
-      :fps="animationsProps.fps[0]"
-      :loop="animationsProps.loop"
-      :center="[0.5, 0.5]"
-      :scale="[3.5, 3.5]"
-      :position="[0,-1, 0]"
-    />
-  </Suspense>
+  <AnimatedSprite
+    image="/boss-animation.png"
+    atlas="/boss-animation.json"
+    :animation="animationsProps.animations[0]"
+    :fps="animationsProps.fps[0]"
+    :loop="animationsProps.loop"
+    :center="[0.5, 0.5]"
+    :scale="[3.5, 3.5]"
+    :position="[0,-1, 0]"
+  />
 </template>
 
 <script setup>
