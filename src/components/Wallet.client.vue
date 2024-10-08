@@ -146,16 +146,15 @@ const closeWalletForm = () => {
 }
 
 onMounted(async () => {
-  if(solana.walletSelection.value) {
-    selectWallet(solana.walletSelection.value)
-  }
-
   nextTick(async () => {
-    if(!solana.wallet.value && !solana.adapter.value) {
-      solana.connect();
-      publicKey.value = wallet.adapter.value.publicKey.toBase58()
-      connected.value = true
+    if(solana.walletSelection.value) {
+      selectWallet(solana.walletSelection.value)
     }
+    // if(!solana.wallet.value && !solana.adapter.value) {
+    //   solana.connect();
+    //   publicKey.value = wallet.adapter.value.publicKey.toBase58()
+    //   connected.value = true
+    // }
   })
 
   const to = setTimeout(() => {
@@ -165,7 +164,7 @@ onMounted(async () => {
 })
 
 watchEffect(async () => {
-
+  console.log(solana.walletSelection.value)
   if(wallet.adapter.value && wallet.wallet.value) {
     if(wallet.adapter.value.connecting) {
       connected.value = false
