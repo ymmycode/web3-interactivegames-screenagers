@@ -147,8 +147,9 @@ const closeWalletForm = () => {
 
 onMounted(async () => {
   nextTick(async () => {
-    if(solana.walletSelection.value) {
-      selectWallet(solana.walletSelection.value)
+    if(localStorage.key("solana")) {
+      // selectWallet(solana.walletSelection.value)
+      console.log(localStorage.getItem('solana'))
     }
     if(!solana.wallet.value && !solana.adapter.value) {
       solana.connect();
