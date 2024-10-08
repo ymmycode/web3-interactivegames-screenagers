@@ -33,7 +33,8 @@ export default defineNuxtConfig({
         autoImports: ['defineStore', 'acceptHMRUpdate', 'useDayjs'],
         storesDirs: ['./src/stores/**'],
       },
-  ],
+    ],
+    'pinia-plugin-persistedstate/nuxt',
   ],
 
   booster: {
