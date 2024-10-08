@@ -4,7 +4,7 @@ export const useSolana = defineStore('solana', {
   id: 'solana',
   state: () => {
     return {
-      walletName: '',
+      walletSelection: '',
       wallet: null,
       adapter: null,
       publicKey: null,
@@ -13,8 +13,8 @@ export const useSolana = defineStore('solana', {
 
   actions: {
 
-    async getWallet(payload) {
-      if(payload === 'phantom') {
+    async getWallet() {
+      if(this.walletSelection === 'phantom') {
         const { PhantomWalletAdapter } = await import('@solana/wallet-adapter-phantom')
         const getPhantomWallet = () => ({
           name: 'Phantom',
@@ -25,7 +25,7 @@ export const useSolana = defineStore('solana', {
         this.wallet = getPhantomWallet()
       }
 
-      if(payload === 'solflare') {
+      if(this.walletSelection === 'solflare') {
         const { SolflareWalletAdapter } = await import('@solana/wallet-adapter-solflare')
         const getSolflareWallet = () => ({
           name: 'Solflare',
@@ -38,6 +38,9 @@ export const useSolana = defineStore('solana', {
     },
     setWallet(wallet) {
       this.wallet = wallet
+    },
+    setWalletSelection(selection) {
+      this.walletSelection = selection
     },
     async connect() {
       try {
