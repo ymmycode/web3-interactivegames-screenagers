@@ -9,7 +9,7 @@
             <h1 class="text-xl unbounded tracking-wider text-center">Connect Wallet</h1>
             <div v-if="!connected && !walletSelection" class="w-full">
               <div v-for="item in wallets" :key="item.id" @click="selectWallet(item)"
-                class="w-full border border-primary-1 border-opacity-80 p-[1vh] items-center justify-between gap-1"
+                class="w-full border border-primary-1 border-opacity-80 p-[1vh] flex items-center justify-between gap-1"
               >
                 <div v-html="item.icon"></div>
                 <div v-if="!connected" class="unbounded text-[2vh]">{{ item.name }}</div>
@@ -22,7 +22,7 @@
             </div>
             <div v-else class="w-full">
               <div @click="selectedWallet.connectFunction()"
-                class="w-full border border-primary-1 border-opacity-80 p-[1vh] items-center justify-between gap-1"
+                class="w-full border border-primary-1 border-opacity-80 p-[1vh] flex items-center justify-between gap-1"
               >
                 <div v-html="selectedWallet.icon"></div>
                 <div class="relative">
@@ -77,7 +77,7 @@ const wallets = ref([
         if(!connected.value) {
           solana.connect()
         }
-      }, 2000)
+      }, 1000)
     },
 
     disconnectFunction: async () => {
@@ -118,7 +118,7 @@ const wallets = ref([
         if(!connected.value) {
           solana.connect()
         }
-      }, 2000)
+      }, 1000)
     },
 
     disconnectFunction: async () => {
@@ -154,12 +154,16 @@ onMounted(async () => {
 })
 
 watchEffect(() => {
-  if(phantomWallet.adapter.value && walletSelection.value) {
-    if(phantomWallet.adapter.value.connecting) {
-      connected.value = false
-    } else {
-      publicKey.value = phantomWallet.adapter.value?.publicKey.toBase58()
-      connected.value = true
+  if(solana.walletSelection,value) {
+    solana.getWallet();
+
+    if(phantomWallet.adapter.value && phantomWallet.wallet.value) {
+      if(phantomWallet.adapter.value.connecting) {
+        connected.value = false
+      } else {
+        publicKey.value = phantomWallet.adapter.value?.publicKey.toBase58()
+        connected.value = true
+      }
     }
   }
 })

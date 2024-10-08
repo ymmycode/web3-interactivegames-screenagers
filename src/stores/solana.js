@@ -4,7 +4,7 @@ export const useSolana = defineStore('solana', {
   id: 'solana',
   state: () => {
     return {
-      walletSelection: '',
+      walletSelection: null,
       wallet: null,
       adapter: null,
       publicKey: null,
