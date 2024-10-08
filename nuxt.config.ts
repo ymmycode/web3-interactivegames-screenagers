@@ -162,7 +162,6 @@ export default defineNuxtConfig({
         '@solana/web3.js',
         '@solana/wallet-adapter-phantom',
         '@solana/wallet-adapter-solflare',
-        '@solana/wallet-adapter-backpack',
         '@solana/wallet-adapter-base'
       ],
     }

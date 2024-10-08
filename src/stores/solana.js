@@ -2,11 +2,11 @@ import { defineStore } from 'pinia'
 
 export const useSolana = defineStore('solana', {
   id: 'solana',
-  persist: true,
   state: () => {
     return {
       wallet: null,
-      adapter: null
+      adapter: null,
+      publicKey: null,
     }
   },
 
@@ -40,4 +40,4 @@ export const useSolana = defineStore('solana', {
       }
     }
   },
-})
+}, { persist: true })

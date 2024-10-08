@@ -10,7 +10,8 @@
     <div v-if="won" class="fixed w-full h-full top-0 left-0 bg-black bg-opacity-80 backdrop-blur-lg z-20 flex justify-center flex-col gap-4 items-center text-primary-1">
       <h1 class="unbounded text-3xl font-bold tracking-widest">Victory</h1>
       <TransitionFade>
-        <button v-if="showButton" @click="refreshPage" class="text-black text-xl unbounded tracking-wider bg-primary-1 px-4 py-2 outline-none focus:outline-none">Restart?</button>
+        <button v-if="showButton" @click="refreshPage" class="text-black text-xl unbounded tracking-wider bg-primary-1 px-4 py-2 outline-none focus:outline-none text-center">Restart?</button>
+        <button v-if="showButton" @click="won = false" class="text-black text-xl unbounded tracking-wider border border-primary-1 px-4 py-2 outline-none focus:outline-none text-center">Back</button>
       </TransitionFade>
     </div>
   </TransitionFade>
@@ -19,17 +20,24 @@
     <div v-if="over" class="fixed w-full h-full top-0 left-0 bg-black bg-opacity-80 backdrop-blur-lg z-20 flex justify-center flex-col gap-4 items-center text-primary-1">
       <h1 class="unbounded text-2xl font-bold tracking-widest">You Lose</h1>
       <TransitionFade>
-        <button v-if="showButton" @click="refreshPage" class="text-black text-xl unbounded tracking-wider bg-primary-1 px-4 py-2 outline-none focus:outline-none">Restart?</button>
+        <button v-if="showButton" @click="refreshPage" class="text-black text-xl unbounded tracking-wider bg-primary-1 px-4 py-2 outline-none focus:outline-none text-center">Restart?</button>
+        <button v-if="showButton" @click="over = false" class="text-black text-xl unbounded tracking-wider border border-primary-1 px-4 py-2 outline-none focus:outline-none text-center">Back</button>
       </TransitionFade>
     </div>
   </TransitionFade>
 
   <div class="w-full h-[100dvh] p-[2vw] container-ui-controller">
     <div class="relative w-full h-full box-player flex flex-col items-stretch py-[5vw] px-[4vw] gap-[4vw]">
-      <div class="w-full h-[70%] box-attack-button flex flex-col justify-center items-center gap-[8vw]">
+      <div v-if="!over || !won" class="w-full h-[70%] box-attack-button flex flex-col justify-center items-center gap-[8vw]">
         <div class="unbounded text-2xl text-primary-1 tracking-wider">Attack The Boss</div>
         <button ref="attackButton" @click="attackPub" class="disable-dbl-tap-zoom button-attack bg-primary-1 flex justify-center items-center box-radial-button">
           <div class="disable-dbl-tap-zoom unbounded text-2xl text-center origin-center font-bold">ATTACK</div>
+        </button>
+      </div>
+      <div v-else class="w-full h-[70%] box-attack-button flex flex-col justify-center items-center gap-[8vw]">
+        <div class="unbounded text-2xl text-primary-1 tracking-wider">Rejoin The Game</div>
+        <button ref="attackButton" @click="refreshPage" class="disable-dbl-tap-zoom button-attack bg-primary-1 flex justify-center items-center box-radial-button">
+          <div class="disable-dbl-tap-zoom unbounded text-2xl text-center origin-center font-bold">RESTART</div>
         </button>
       </div>
       <div class="w-full h-[30%] box-chat flex items-center justify-center gap-4">
