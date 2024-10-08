@@ -20,7 +20,7 @@
                 </div>
               </div>
             </div>
-            <div v-else-if="connected && selectedWallet" class="w-full">
+            <div v-else class="w-full">
               <div
                 class="w-full border border-primary-1 border-opacity-80 p-[1vh] flex items-center justify-between gap-1"
               >

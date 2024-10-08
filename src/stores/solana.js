@@ -58,4 +58,8 @@ export const useSolana = defineStore('solana', {
       }
     }
   },
-}, { persist: true })
+
+  persist: {
+    storage: piniaPluginPersistedstate.localStorage(),
+  },
+})
