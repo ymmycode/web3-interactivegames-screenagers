@@ -7,7 +7,7 @@
           <BackgroundPatternComs class="absolute top-0 left-0 w-full h-full z-0 opacity-35"/>
           <div class="relative z-10 p-[2vh] space-y-7 text-primary-1 shadow-wallet-box">
             <h1 class="text-xl unbounded tracking-wider text-center">Connect Wallet</h1>
-            <div v-if="!connected && !walletSelection" class="w-full">
+            <div v-if="!connected && !selectedWallet" class="w-full">
               <div v-for="item in wallets" :key="item.id" @click="selectWallet(item)"
                 class="w-full border border-primary-1 border-opacity-80 p-[1vh] flex items-center justify-between gap-1"
               >
@@ -21,11 +21,15 @@
               </div>
             </div>
             <div v-else class="w-full">
-              <div @click="selectedWallet.connectFunction()"
+              <div
                 class="w-full border border-primary-1 border-opacity-80 p-[1vh] flex items-center justify-between gap-1"
               >
                 <div v-html="selectedWallet.icon"></div>
+                <div v-if="!connected" class="unbounded text-[2vh]">Connect</div>
                 <div class="relative">
+                  <div v-if="!connected" class="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="16" stroke-dashoffset="16" d="M12 3c4.97 0 9 4.03 9 9"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="16;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path><path stroke-dasharray="64" stroke-dashoffset="64" stroke-opacity="0.3" d="M12 3c4.97 0 9 4.03 9 9c0 4.97 -4.03 9 -9 9c-4.97 0 -9 -4.03 -9 -9c0 -4.97 4.03 -9 9 -9Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.2s" values="64;0"/></path></g></svg>
+                  </div>
                   <div v-if="connected" class="relative">
                     <div class="w-[65vw]">
                       <div class="truncate unbounded text-[2vh]">
@@ -69,7 +73,7 @@ const wallets = ref([
     name: 'Phantom',
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-[5vh]" viewBox="0 0 24 24"><path fill="#ab9ff2" d="M4.367 20c2.552 0 4.47-2.132 5.614-3.817a3.2 3.2 0 0 0-.216 1.103c0 .984.588 1.685 1.748 1.685c1.593 0 3.294-1.342 4.176-2.788a2 2 0 0 0-.093.581c0 .686.402 1.119 1.222 1.119c2.583 0 5.182-4.4 5.182-8.246C22 6.639 20.422 4 16.462 4C9.502 4 2 12.172 2 17.45C2 19.523 3.16 20 4.367 20m9.698-10.692c0-.745.433-1.267 1.067-1.267c.619 0 1.052.522 1.052 1.267c0 .746-.433 1.283-1.052 1.283c-.634 0-1.067-.537-1.067-1.283m3.31 0c0-.745.433-1.267 1.067-1.267c.62 0 1.052.522 1.052 1.267c0 .746-.433 1.283-1.052 1.283c-.634 0-1.067-.537-1.067-1.283"/></svg>`,
     connectFunction: async() => {
-      solana.walletSelection('phantom')
+      solana.setWalletSelection('phantom')
       walletSelection.value = 'phantom'
       solana.getWallet();
 
@@ -111,7 +115,7 @@ const wallets = ref([
     `,
     connectFunction: async() => {
       walletSelection.value = 'solflare'
-      solana.walletSelection('solflare')
+      solana.setWalletSelection('solflare')
       solana.getWallet();
 
 
@@ -132,8 +136,9 @@ const wallets = ref([
   },
 ])
 
-const selectWallet = (wallet) => {
+const selectWallet = async (wallet) => {
   selectedWallet.value = wallet
+  selectedWallet.value.connectFunction()
 }
 
 const closeWalletForm = () => {
