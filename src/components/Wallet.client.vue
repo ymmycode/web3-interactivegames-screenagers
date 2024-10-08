@@ -150,17 +150,21 @@ onMounted(async () => {
     if(solana.walletSelection.value) {
       selectWallet(solana.walletSelection.value)
     }
-    // if(!solana.wallet.value && !solana.adapter.value) {
-    //   solana.connect();
-    //   publicKey.value = wallet.adapter.value.publicKey.toBase58()
-    //   connected.value = true
-    // }
+    if(!solana.wallet.value && !solana.adapter.value) {
+      solana.connect();
+      publicKey.value = wallet.adapter.value.publicKey.toBase58()
+      connected.value = true
+    }
   })
 
   const to = setTimeout(() => {
     open.value = true
     clearTimeout(to)
   }, 200)
+})
+
+onBeforeUnmount(() => {
+  solana.setWalletSelection(walletSelection.value)
 })
 
 watchEffect(async () => {
