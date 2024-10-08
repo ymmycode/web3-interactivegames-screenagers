@@ -118,8 +118,7 @@ onMounted(async () => {
 })
 
 watchEffect(() => {
-  // console.log(solanaWallet.wallet.value)
-  // console.log(solanaWallet.adapter.value)
+  console.log(solanaWallet.adapter.value)
 })
 
 </script>
