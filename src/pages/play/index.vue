@@ -7,7 +7,7 @@
   </TransitionFade>
 
   <TransitionFade>
-    <div v-if="won || showGameOverlay" class="fixed w-full h-full top-0 left-0 bg-black bg-opacity-80 backdrop-blur-lg z-20 flex justify-center flex-col gap-4 items-center text-primary-1">
+    <div v-if="won && showGameOverlay" class="fixed w-full h-full top-0 left-0 bg-black bg-opacity-80 backdrop-blur-lg z-20 flex justify-center flex-col gap-4 items-center text-primary-1">
       <h1 class="unbounded text-3xl font-bold tracking-widest">Victory</h1>
       <TransitionFade>
         <div v-if="showButton" class="w-full flex flex-col justify-center items-center gap-3">
@@ -19,7 +19,7 @@
   </TransitionFade>
 
   <TransitionFade>
-    <div v-if="over || showGameOverlay" class="fixed w-full h-full top-0 left-0 bg-black bg-opacity-80 backdrop-blur-lg z-20 flex justify-center flex-col gap-4 items-center text-primary-1">
+    <div v-if="over && showGameOverlay" class="fixed w-full h-full top-0 left-0 bg-black bg-opacity-80 backdrop-blur-lg z-20 flex justify-center flex-col gap-4 items-center text-primary-1">
       <h1 class="unbounded text-2xl font-bold tracking-widest">You Lose</h1>
       <TransitionFade>
         <div v-if="showButton" class="w-full flex flex-col justify-center items-center gap-3">
@@ -112,6 +112,9 @@ useSeoMeta({
   title: 'Controller',
 });
 
+const solana = useSolana();
+const wallet = storeToRefs(solana)
+
 const mainStore = useMainStore()
 const { player, state, health } = storeToRefs(mainStore)
 const intro = ref(true)
@@ -169,6 +172,7 @@ const attackPub = (e) => {
 const gameplayState = (val) => {
   if(val === 'over') {
     over.value = true
+    showGameOverlay.value = true
     const to = setTimeout(() => {
       gameRoom?.presence.leave()
       showButton.value = true
@@ -178,6 +182,7 @@ const gameplayState = (val) => {
 
   if(val === 'won') {
     won.value = true
+    showGameOverlay.value = true
     const to = setTimeout(() => {
       gameRoom?.presence.leave()
       showButton.value = true
