@@ -55,7 +55,7 @@
 const emits = defineEmits(['closeWalletForm'])
 
 const solana = useSolana()
-const phantomWallet = storeToRefs(solana)
+const wallet = storeToRefs(solana)
 
 const open = ref(false)
 const connected = ref(false)
@@ -70,6 +70,7 @@ const wallets = ref([
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-[5vh]" viewBox="0 0 24 24"><path fill="#ab9ff2" d="M4.367 20c2.552 0 4.47-2.132 5.614-3.817a3.2 3.2 0 0 0-.216 1.103c0 .984.588 1.685 1.748 1.685c1.593 0 3.294-1.342 4.176-2.788a2 2 0 0 0-.093.581c0 .686.402 1.119 1.222 1.119c2.583 0 5.182-4.4 5.182-8.246C22 6.639 20.422 4 16.462 4C9.502 4 2 12.172 2 17.45C2 19.523 3.16 20 4.367 20m9.698-10.692c0-.745.433-1.267 1.067-1.267c.619 0 1.052.522 1.052 1.267c0 .746-.433 1.283-1.052 1.283c-.634 0-1.067-.537-1.067-1.283m3.31 0c0-.745.433-1.267 1.067-1.267c.62 0 1.052.522 1.052 1.267c0 .746-.433 1.283-1.052 1.283c-.634 0-1.067-.537-1.067-1.283"/></svg>`,
     connectFunction: async() => {
       solana.walletSelection('phantom')
+      walletSelection.value = 'phantom'
       solana.getWallet();
 
       const to = setTimeout(async () => {
@@ -109,6 +110,7 @@ const wallets = ref([
 
     `,
     connectFunction: async() => {
+      walletSelection.value = 'solflare'
       solana.walletSelection('solflare')
       solana.getWallet();
 
@@ -142,7 +144,7 @@ onMounted(async () => {
   nextTick(async () => {
     if(!solana.wallet.value && !solana.adapter.value) {
       solana.connect();
-      publicKey.value = phantomWallet.adapter.value.publicKey.toBase58()
+      publicKey.value = wallet.adapter.value.publicKey.toBase58()
       connected.value = true
     }
   })
@@ -153,17 +155,13 @@ onMounted(async () => {
   }, 200)
 })
 
-watchEffect(() => {
-  if(solana.walletSelection,value) {
-    solana.getWallet();
-
-    if(phantomWallet.adapter.value && phantomWallet.wallet.value) {
-      if(phantomWallet.adapter.value.connecting) {
-        connected.value = false
-      } else {
-        publicKey.value = phantomWallet.adapter.value?.publicKey.toBase58()
-        connected.value = true
-      }
+watchEffect(async () => {
+  if(wallet.adapter.value && wallet.wallet.value) {
+    if(wallet.adapter.value.connecting) {
+      connected.value = false
+    } else {
+      publicKey.value = wallet.adapter.value?.publicKey.toBase58()
+      connected.value = true
     }
   }
 })
