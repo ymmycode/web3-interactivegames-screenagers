@@ -41,7 +41,7 @@
 const emits = defineEmits(['closeWalletForm'])
 
 const solana = useSolana()
-const { wallet } = storeToRefs(solana)
+const { wallet, adapter } = storeToRefs(solana)
 
 const open = ref(false)
 const connected = ref(false)
@@ -101,6 +101,7 @@ onMounted(async () => {
 
 watchEffect(() => {
   console.log(wallet.value)
+  console.log(adapter.value)
 })
 
 </script>
