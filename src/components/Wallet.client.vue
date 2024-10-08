@@ -146,6 +146,10 @@ const closeWalletForm = () => {
 }
 
 onMounted(async () => {
+  if(solana.walletSelection.value) {
+    selectWallet(solana.walletSelection.value)
+  }
+
   nextTick(async () => {
     if(!solana.wallet.value && !solana.adapter.value) {
       solana.connect();
@@ -161,6 +165,7 @@ onMounted(async () => {
 })
 
 watchEffect(async () => {
+
   if(wallet.adapter.value && wallet.wallet.value) {
     if(wallet.adapter.value.connecting) {
       connected.value = false
