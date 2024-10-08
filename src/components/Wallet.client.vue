@@ -149,9 +149,10 @@ onMounted(async () => {
   nextTick(async () => {
     if(localStorage.key("solana")) {
       const solana = JSON.parse(localStorage.getItem('solana'))
-      selectWallet(solana.walletSelection)
+      const wallet = wallets.value.find(wallet => wallet.id === solana.walletSelection)
+      selectWallet(wallet)
     }
-    if(!solana.wallet.value && !solana.adapter.value) {
+    if(wallet.adapter.value && wallet.wallet.value) {
       solana.connect();
       publicKey.value = wallet.adapter.value.publicKey.toBase58()
       connected.value = true
@@ -165,7 +166,6 @@ onMounted(async () => {
 })
 
 watchEffect(async () => {
-  console.log(solana.walletSelection.value)
   if(wallet.adapter.value && wallet.wallet.value) {
     if(wallet.adapter.value.connecting) {
       connected.value = false
