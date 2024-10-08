@@ -165,10 +165,6 @@ onMounted(async () => {
   }, 200)
 })
 
-onBeforeUnmount(() => {
-  solana.setWalletSelection(walletSelection.value)
-})
-
 watchEffect(async () => {
   console.log(solana.walletSelection.value)
   if(wallet.adapter.value && wallet.wallet.value) {
