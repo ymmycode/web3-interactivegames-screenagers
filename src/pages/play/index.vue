@@ -45,7 +45,7 @@
           <div class="unbounded text-xs text-primary-1 tracking-wider text-center">Info</div>
         </div>
 
-        <div class="flex flex-col justify-center items-center gap-[2vw]">
+        <!-- <div class="flex flex-col justify-center items-center gap-[2vw]">
           <button @click.stop="showComs = !showComs" class="disable-dbl-tap-zoom button-chat w-full bg-primary-1 flex justify-center items-center box-radial-button-small">
             <div class="disable-dbl-tap-zoom unbounded text-2xl text-center origin-center font-bold text-black">
               <svg class="max-w-[6vw] w-full h-auto" viewBox="0 0 100 88" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +54,7 @@
             </div>
           </button>
           <div class="unbounded text-xs text-primary-1 tracking-wider text-center">Coms</div>
-        </div>
+        </div> -->
 
         <div class="flex flex-col justify-center items-center gap-[2vw]">
           <button @click.stop="showWalletForm = !showWalletForm" class="disable-dbl-tap-zoom button-chat w-full bg-primary-1 flex justify-center items-center box-radial-button-small">

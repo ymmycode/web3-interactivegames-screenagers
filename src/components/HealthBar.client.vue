@@ -10,7 +10,7 @@
       ></div>
     </div>
   </div>
-  <div class="z-1 absolute top-[2vh] left-1/2 -translate-x-1/2 w-full h-[4vh] max-w-[40vw] z-2 p-[.5vh]">
+  <div class="z-20 absolute top-[2vh] left-1/2 -translate-x-1/2 w-full h-[4vh] max-w-[40vw] p-[.5vh]">
     <div class="relative w-full h-full z-1">
       <figure class="absolute heartbeat-position z-2 heartbeat">
         <img src="/images/heart.png" width="80" height="80" alt="">
