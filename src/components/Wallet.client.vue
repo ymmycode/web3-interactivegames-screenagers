@@ -7,9 +7,8 @@
           <BackgroundPatternComs class="absolute top-0 left-0 w-full h-full z-0 opacity-35"/>
           <div class="relative z-10 p-[2vh] space-y-7 text-primary-1 shadow-wallet-box">
             <h1 class="text-xl unbounded tracking-wider text-center">Connect Wallet</h1>
-            <div class="w-full">
-              <div v-for="item in wallets" :key="item.id" @click="item.connectFunction()"
-                :class="walletSelection === item.id ? 'flex' : 'hidden'"
+            <div v-if="!connected && !walletSelection" class="w-full">
+              <div v-for="item in wallets" :key="item.id" @click="selectWallet(item)"
                 class="w-full border border-primary-1 border-opacity-80 p-[1vh] items-center justify-between gap-1"
               >
                 <div v-html="item.icon"></div>
@@ -18,6 +17,15 @@
                   <div v-if="!connected" class="">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="16" stroke-dashoffset="16" d="M12 3c4.97 0 9 4.03 9 9"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="16;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path><path stroke-dasharray="64" stroke-dashoffset="64" stroke-opacity="0.3" d="M12 3c4.97 0 9 4.03 9 9c0 4.97 -4.03 9 -9 9c-4.97 0 -9 -4.03 -9 -9c0 -4.97 4.03 -9 9 -9Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.2s" values="64;0"/></path></g></svg>
                   </div>
+                </div>
+              </div>
+            </div>
+            <div v-else class="w-full">
+              <div @click="selectedWallet.connectFunction()"
+                class="w-full border border-primary-1 border-opacity-80 p-[1vh] items-center justify-between gap-1"
+              >
+                <div v-html="selectedWallet.icon"></div>
+                <div class="relative">
                   <div v-if="connected" class="relative">
                     <div class="w-[65vw]">
                       <div class="truncate unbounded text-[2vh]">
@@ -26,7 +34,7 @@
                     </div>
                   </div>
                 </div>
-                <button v-if="connected" @click.stop="item.disconnectFunction()" class="unbounded text-[2vh] bg-primary-1 bg-opacity-20 p-[1vh] hover:bg-opacity-50 border border-opacity-0 hover:border-opacity-100 border-primary-1 transition-colors">
+                <button v-if="connected" @click.stop="selectedWallet.disconnectFunction()" class="unbounded text-[2vh] bg-primary-1 bg-opacity-20 p-[1vh] hover:bg-opacity-50 border border-opacity-0 hover:border-opacity-100 border-primary-1 transition-colors">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-[2.5vh] h-auto" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="m17 11l4.586 4.586a2 2 0 0 1 0 2.828l-3.172 3.172a2 2 0 0 1-2.828 0L11 17m6-9h4m-5-1V3M8 21v-4m-5-1h4m0-3L2.414 8.414a2 2 0 0 1 0-2.828l3.172-3.172a2 2 0 0 1 2.828 0L13 7"/></svg>
                 </button>
               </div>
@@ -53,6 +61,7 @@ const open = ref(false)
 const connected = ref(false)
 const publicKey = ref()
 const walletSelection = ref(null)
+const selectedWallet = ref(null)
 
 const wallets = ref([
   {
@@ -120,6 +129,10 @@ const wallets = ref([
     }
   },
 ])
+
+const selectWallet = (wallet) => {
+  selectedWallet.value = wallet
+}
 
 const closeWalletForm = () => {
   emits('closeWalletForm')
