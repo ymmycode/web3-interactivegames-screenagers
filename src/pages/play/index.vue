@@ -7,21 +7,21 @@
   </TransitionFade>
 
   <TransitionFade>
-    <div v-if="won" class="fixed w-full h-full top-0 left-0 bg-black bg-opacity-80 backdrop-blur-lg z-20 flex justify-center flex-col gap-4 items-center text-primary-1">
+    <div v-if="won || showGameOverlay" class="fixed w-full h-full top-0 left-0 bg-black bg-opacity-80 backdrop-blur-lg z-20 flex justify-center flex-col gap-4 items-center text-primary-1">
       <h1 class="unbounded text-3xl font-bold tracking-widest">Victory</h1>
       <TransitionFade>
         <button v-if="showButton" @click="refreshPage" class="text-black text-xl unbounded tracking-wider bg-primary-1 px-4 py-2 outline-none focus:outline-none text-center">Restart?</button>
-        <button v-if="showButton" @click="won = false" class="text-black text-xl unbounded tracking-wider border border-primary-1 px-4 py-2 outline-none focus:outline-none text-center">Back</button>
+        <button v-if="showButton" @click="showGameOverlay = false" class="text-black text-xl unbounded tracking-wider border border-primary-1 px-4 py-2 outline-none focus:outline-none text-center">Back</button>
       </TransitionFade>
     </div>
   </TransitionFade>
 
   <TransitionFade>
-    <div v-if="over" class="fixed w-full h-full top-0 left-0 bg-black bg-opacity-80 backdrop-blur-lg z-20 flex justify-center flex-col gap-4 items-center text-primary-1">
+    <div v-if="over || showGameOverlay" class="fixed w-full h-full top-0 left-0 bg-black bg-opacity-80 backdrop-blur-lg z-20 flex justify-center flex-col gap-4 items-center text-primary-1">
       <h1 class="unbounded text-2xl font-bold tracking-widest">You Lose</h1>
       <TransitionFade>
         <button v-if="showButton" @click="refreshPage" class="text-black text-xl unbounded tracking-wider bg-primary-1 px-4 py-2 outline-none focus:outline-none text-center">Restart?</button>
-        <button v-if="showButton" @click="over = false" class="text-black text-xl unbounded tracking-wider border border-primary-1 px-4 py-2 outline-none focus:outline-none text-center">Back</button>
+        <button v-if="showButton" @click="showGameOverlay = false" class="text-black text-xl unbounded tracking-wider border border-primary-1 px-4 py-2 outline-none focus:outline-none text-center">Back</button>
       </TransitionFade>
     </div>
   </TransitionFade>
@@ -120,6 +120,7 @@ const showComs = ref(false)
 const attackButton = ref()
 const showButton = ref(false)
 const showWalletForm = ref(false)
+const showGameOverlay = ref(false)
 
 const disableZoom = (e) => {
   e.preventDefault();

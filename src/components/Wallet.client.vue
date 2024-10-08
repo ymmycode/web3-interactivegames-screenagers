@@ -8,7 +8,7 @@
           <div class="relative z-10 p-[2vh] space-y-7 text-primary-1 shadow-wallet-box">
             <h1 class="text-xl unbounded tracking-wider text-center">Connect Wallet</h1>
             <div class="w-full">
-              <div v-for="item in wallets" :key="item.id" @click="item.connectFunction()" class="w-full border border-primary-1 border-opacity-80 p-[1vh] flex items-center gap-1">
+              <div v-for="item in wallets" :key="item.id" @click="item.connectFunction()" class="w-full border border-primary-1 border-opacity-80 p-[1vh] flex items-center justify-between gap-1">
                 <div v-html="item.icon"></div>
                 <div class="relative">
                   <div v-if="!connected" class="unbounded text-[2vh]">{{ item.name }}</div>
@@ -54,7 +54,6 @@ const wallets = ref([
     connectFunction: async() => {
       solana.connect()
       if(solanaWallet.adapter.value && solanaWallet.wallet.value) {
-        solana.setWallet(solanaWallet.wallet.value)
         publicKey.value = solanaWallet.adapter.value.publicKey.toBase58()
         connected.value = true
       }
