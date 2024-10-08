@@ -32,7 +32,7 @@
           <div class="disable-dbl-tap-zoom unbounded text-2xl text-center origin-center font-bold">ATTACK</div>
         </button>
       </div>
-      <div class="w-full h-[30%] box-chat grid grid-cols-3 items-center justify-center">
+      <div class="w-full h-[30%] box-chat flex items-center justify-center gap-4">
 
         <div class="flex flex-col justify-center items-center gap-[2vw]">
           <button @click.stop="showComs = !showComs" class="disable-dbl-tap-zoom button-chat w-full bg-primary-1 flex justify-center items-center box-radial-button-small">
@@ -201,7 +201,7 @@ const initiateGame = () => {
 
 onMounted(() => {
   nextTick(() => {
-    // initiateGame()
+    initiateGame()
   })
 })
 
