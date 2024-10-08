@@ -8,7 +8,10 @@
           <div class="relative z-10 p-[2vh] space-y-7 text-primary-1 shadow-wallet-box">
             <h1 class="text-xl unbounded tracking-wider text-center">Connect Wallet</h1>
             <div class="w-full">
-              <div v-for="item in wallets" :key="item.id" @click="item.connectFunction()" class="w-full border border-primary-1 border-opacity-80 p-[1vh] flex items-center justify-between gap-1">
+              <div v-for="item in wallets" :key="item.id" @click="item.connectFunction()"
+                :class="walletSelection === item.id ? '' : 'hidden'"
+                class="w-full border border-primary-1 border-opacity-80 p-[1vh] flex items-center justify-between gap-1"
+              >
                 <div v-html="item.icon"></div>
                 <div v-if="!connected" class="unbounded text-[2vh]">{{ item.name }}</div>
                 <div class="relative">
@@ -49,21 +52,23 @@ const phantomWallet = storeToRefs(solana)
 const open = ref(false)
 const connected = ref(false)
 const publicKey = ref()
-const connecting = ref(false)
+const walletSelection = ref(false)
 
 const wallets = ref([
   {
+    id: 'phantom',
     name: 'Phantom',
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-[5vh]" viewBox="0 0 24 24"><path fill="#ab9ff2" d="M4.367 20c2.552 0 4.47-2.132 5.614-3.817a3.2 3.2 0 0 0-.216 1.103c0 .984.588 1.685 1.748 1.685c1.593 0 3.294-1.342 4.176-2.788a2 2 0 0 0-.093.581c0 .686.402 1.119 1.222 1.119c2.583 0 5.182-4.4 5.182-8.246C22 6.639 20.422 4 16.462 4C9.502 4 2 12.172 2 17.45C2 19.523 3.16 20 4.367 20m9.698-10.692c0-.745.433-1.267 1.067-1.267c.619 0 1.052.522 1.052 1.267c0 .746-.433 1.283-1.052 1.283c-.634 0-1.067-.537-1.067-1.283m3.31 0c0-.745.433-1.267 1.067-1.267c.62 0 1.052.522 1.052 1.267c0 .746-.433 1.283-1.052 1.283c-.634 0-1.067-.537-1.067-1.283"/></svg>`,
     connectFunction: async() => {
+      walletSelection.value = 'phantom'
       solana.getWallet("phantom");
 
-      const to = setTimeout(() => {
+      const to = setTimeout(async () => {
         clearTimeout(to)
         if(!connected.value) {
           solana.connect()
         }
-      }, 1000)
+      }, 2000)
     },
 
     disconnectFunction: async () => {
@@ -75,6 +80,7 @@ const wallets = ref([
   },
 
   {
+    id: 'solflare',
     name: 'Solflare',
     icon: `
       <svg class="h-auto w-[5vh]" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -94,14 +100,15 @@ const wallets = ref([
 
     `,
     connectFunction: async() => {
+      walletSelection.value = 'solflare'
       solana.getWallet("solflare");
 
-      const to = setTimeout(() => {
+      const to = setTimeout(async () => {
         clearTimeout(to)
         if(!connected.value) {
           solana.connect()
         }
-      }, 1000)
+      }, 2000)
     },
 
     disconnectFunction: async () => {
