@@ -20,7 +20,7 @@
                     </div>
                   </div>
                 </div>
-                <button v-if="connected" @click="item.disconnectFunction()" class="unbounded text-[2vh] bg-primary-1 bg-opacity-20 p-[1vh] hover:bg-opacity-50 border border-opacity-0 hover:border-opacity-100 border-primary-1 transition-colors">
+                <button v-if="connected" @click.stop="item.disconnectFunction()" class="unbounded text-[2vh] bg-primary-1 bg-opacity-20 p-[1vh] hover:bg-opacity-50 border border-opacity-0 hover:border-opacity-100 border-primary-1 transition-colors">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-[2.5vh] h-auto" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="m17 11l4.586 4.586a2 2 0 0 1 0 2.828l-3.172 3.172a2 2 0 0 1-2.828 0L11 17m6-9h4m-5-1V3M8 21v-4m-5-1h4m0-3L2.414 8.414a2 2 0 0 1 0-2.828l3.172-3.172a2 2 0 0 1 2.828 0L13 7"/></svg>
                 </button>
               </div>
