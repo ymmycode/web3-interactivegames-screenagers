@@ -52,7 +52,7 @@ const phantomWallet = storeToRefs(solana)
 const open = ref(false)
 const connected = ref(false)
 const publicKey = ref()
-const walletSelection = ref()
+const walletSelection = ref(null)
 
 const wallets = ref([
   {
@@ -140,14 +140,12 @@ onMounted(async () => {
 })
 
 watchEffect(() => {
-  if(walletSelection.value){
-    if(phantomWallet.adapter.value) {
-      if(phantomWallet.adapter.value.connecting) {
-        connected.value = false
-      } else {
-        publicKey.value = phantomWallet.adapter.value?.publicKey.toBase58()
-        connected.value = true
-      }
+  if(phantomWallet.adapter.value && walletSelection.value) {
+    if(phantomWallet.adapter.value.connecting) {
+      connected.value = false
+    } else {
+      publicKey.value = phantomWallet.adapter.value?.publicKey.toBase58()
+      connected.value = true
     }
   }
 })
