@@ -78,9 +78,9 @@
     <ChatRoom v-if="showComs" @closeComs="showComs = false"/>
   </TransitionFade>
 
-  <Transition name="nested">
+  <TransitionFade>
     <Wallet v-if="showWalletForm" @closeWalletForm="showWalletForm = false" />
-  </Transition>
+  </TransitionFade>
 </template>
 
 <script setup>

@@ -4,7 +4,7 @@
       <source src="/videos/background.mp4">
     </video>
   </div>
-  <transition name="fade-intro" :duration="1000"><div v-if="fadeBackground" class="absolute w-full h-full bg-black top-0 left-0 z-1"></div></transition>
+  <TransitionFade :duration="1000"><div v-if="fadeBackground" class="absolute w-full h-full bg-black top-0 left-0 z-1"></div></TransitionFade>
 </template>
 
 <script setup>

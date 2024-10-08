@@ -1,37 +1,39 @@
 <template>
   <div class="absolute top-0 left-0 w-full h-full z-50">
-    <div class="absolute w-full h-full top-0 left-0 bg-black bg-opacity-90 backdrop-blur-lg z-1 overlay"></div>
-    <div class="bg-black w-full absolute bottom-0 left-0 z-2 bottom-sheet">
-      <div class="relative w-full">
-        <BackgroundPatternComs class="absolute top-0 left-0 w-full h-full z-0 opacity-35"/>
-        <div class="relative z-10 p-[2vh] space-y-7 text-primary-1 shadow-wallet-box">
-          <h1 class="text-xl unbounded tracking-wider text-center">Connect Wallet</h1>
-          <div class="w-full">
-            <div v-for="item in wallets" :key="item.id" @click="item.connectFunction()" class="w-full border border-primary-1 border-opacity-80 p-[1vh] flex items-center gap-4">
-              <div v-html="item.icon"></div>
-              <div class="relative">
-                <div v-if="!connected" class="unbounded text-[2vh]">{{ item.name }}</div>
-                <div v-else class="relative">
-                  <div class="w-[65vw]">
-                    <div class="truncate unbounded text-[2vh]">
-                      {{ "0xasjdlfkjSKDFHkljHEkhe8&SHD*FHKDSJFHkjhK#FJaspodi987u29384hfjhdah" }}
+    <div @click="closeWalletForm" class="absolute w-full h-full top-0 left-0 bg-black bg-opacity-90 backdrop-blur-lg z-1 overlay"></div>
+    <TransitionSlide :offset="[0, 50]">
+      <div v-if="open" class="bg-black w-full absolute bottom-0 left-0 z-2 bottom-sheet">
+        <div class="relative w-full">
+          <BackgroundPatternComs class="absolute top-0 left-0 w-full h-full z-0 opacity-35"/>
+          <div class="relative z-10 p-[2vh] space-y-7 text-primary-1 shadow-wallet-box">
+            <h1 class="text-xl unbounded tracking-wider text-center">Connect Wallet</h1>
+            <div class="w-full">
+              <div v-for="item in wallets" :key="item.id" @click="item.connectFunction()" class="w-full border border-primary-1 border-opacity-80 p-[1vh] flex items-center gap-4">
+                <div v-html="item.icon"></div>
+                <div class="relative">
+                  <div v-if="!connected" class="unbounded text-[2vh]">{{ item.name }}</div>
+                  <div v-else class="relative">
+                    <div class="w-[65vw]">
+                      <div class="truncate unbounded text-[2vh]">
+                        {{ "0xasjdlfkjSKDFHkljHEkhe8&SHD*FHKDSJFHkjhK#FJaspodi987u29384hfjhdah" }}
+                      </div>
                     </div>
                   </div>
                 </div>
+                <button v-if="connected" @click="item.disconnectFunction()" class="unbounded text-[2vh] bg-primary-1 bg-opacity-20 p-[1vh] hover:bg-opacity-50 border border-opacity-0 hover:border-opacity-100 border-primary-1 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-[2.5vh] h-auto" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="m17 11l4.586 4.586a2 2 0 0 1 0 2.828l-3.172 3.172a2 2 0 0 1-2.828 0L11 17m6-9h4m-5-1V3M8 21v-4m-5-1h4m0-3L2.414 8.414a2 2 0 0 1 0-2.828l3.172-3.172a2 2 0 0 1 2.828 0L13 7"/></svg>
+                </button>
               </div>
-              <button v-if="connected" @click="item.disconnectFunction()" class="unbounded text-[2vh] bg-primary-1 bg-opacity-20 p-[1vh] hover:bg-opacity-50 border border-opacity-0 hover:border-opacity-100 border-primary-1 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-[2.5vh] h-auto" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="m17 11l4.586 4.586a2 2 0 0 1 0 2.828l-3.172 3.172a2 2 0 0 1-2.828 0L11 17m6-9h4m-5-1V3M8 21v-4m-5-1h4m0-3L2.414 8.414a2 2 0 0 1 0-2.828l3.172-3.172a2 2 0 0 1 2.828 0L13 7"/></svg>
+            </div>
+            <div class="w-fit mx-auto">
+              <button @click="closeWalletForm" class="border border-primary-1 p-[1vh] text-center hover:bg-primary-1 hover:bg-opacity-20 group">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-[3vh] group-hover:rotate-90 transition-transform duration-300" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m42 42l-9-9M6 6l9 9zm0 36l9-9M42 6l-9 9zM24 29a5 5 0 1 0 0-10a5 5 0 0 0 0 10"/></svg>
               </button>
             </div>
           </div>
-          <div class="w-fit mx-auto">
-            <button @click="closeWalletForm" class="border border-primary-1 p-[1vh] text-center hover:bg-primary-1 hover:bg-opacity-20 group">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-[3vh] group-hover:rotate-90 transition-transform duration-300" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m42 42l-9-9M6 6l9 9zm0 36l9-9M42 6l-9 9zM24 29a5 5 0 1 0 0-10a5 5 0 0 0 0 10"/></svg>
-            </button>
-          </div>
         </div>
       </div>
-    </div>
+    </TransitionSlide>
   </div>
 </template>
 
@@ -41,6 +43,7 @@ const emits = defineEmits(['closeWalletForm'])
 const solana = useSolana()
 const { wallet } = storeToRefs(solana)
 
+const open = ref(false)
 const connected = ref(false)
 
 const wallets = ref([
@@ -86,10 +89,14 @@ const closeWalletForm = () => {
   emits('closeWalletForm')
 }
 
-onMounted(() => {
-  nextTick(() => {
+onMounted(async () => {
+  nextTick(async () => {
     solana.getWallet();
   })
+  const to = setTimeout(() => {
+    open.value = true
+    clearTimeout(to)
+  }, 200)
 })
 
 watchEffect(() => {
