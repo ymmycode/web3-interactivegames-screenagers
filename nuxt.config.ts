@@ -27,6 +27,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'nuxt-booster',
     "@nuxtjs/google-fonts",
+    '@nuxtjs/device',
     [
       '@pinia/nuxt',
       {
