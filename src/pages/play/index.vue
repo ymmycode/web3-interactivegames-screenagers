@@ -146,8 +146,8 @@ onMounted(async () => {
 let ably = null
 let gameRoom = null
 const roomIDSync = computed(() => route.query.room)
-const playerID = computed(() => player.value.id)
-const id = computed(() => playerID.value ? playerID.value : mainStore.setPlayerID(MakeId(6)))
+const playerID = computed(() => wallet.publicKey.value)
+const id = computed(() => playerID.value ? playerID.value : wallet.publicKey.value)
 const newMessage = ref({})
 
 const sendHit = async (command) => {
@@ -219,7 +219,7 @@ const initiateGame = () => {
 
 onMounted(() => {
   nextTick(() => {
-    initiateGame()
+    // initiateGame()
   })
 })
 
@@ -237,7 +237,11 @@ onBeforeUnmount(() => {
 })
 
 watchEffect(() => {
-  console.log(playerID.value)
-  console.log(id.value)
+  // console.log(playerID.value)
+  // console.log(id.value)
+
+  if(wallet.publicKey.value) {
+    initiateGame()
+  }
 })
 </script>
