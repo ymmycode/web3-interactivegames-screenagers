@@ -1,28 +1,28 @@
 <template>
-  <Transition>
+  <TransitionFade>
     <div v-if="intro" class="fixed w-full h-full top-0 left-0 bg-black z-20 flex justify-center flex-col items-center text-primary-1">
       <h1 class="unbounded text-2xl tracking-wider">Welcome to The Game</h1>
       <h2 class="text-xl unbounded tracking-wider">Get Ready!</h2>
     </div>
-  </Transition>
+  </TransitionFade>
 
-  <Transition>
+  <TransitionFade>
     <div v-if="won" class="fixed w-full h-full top-0 left-0 bg-black bg-opacity-80 backdrop-blur-lg z-20 flex justify-center flex-col gap-4 items-center text-primary-1">
       <h1 class="unbounded text-3xl font-bold tracking-widest">Victory</h1>
-      <Transition>
+      <TransitionFade>
         <button v-if="showButton" @click="refreshPage" class="text-black text-xl unbounded tracking-wider bg-primary-1 px-4 py-2 outline-none focus:outline-none">Restart?</button>
-      </Transition>
+      </TransitionFade>
     </div>
-  </Transition>
+  </TransitionFade>
 
-  <Transition>
+  <TransitionFade>
     <div v-if="over" class="fixed w-full h-full top-0 left-0 bg-black bg-opacity-80 backdrop-blur-lg z-20 flex justify-center flex-col gap-4 items-center text-primary-1">
       <h1 class="unbounded text-2xl font-bold tracking-widest">You Lose</h1>
-      <Transition>
+      <TransitionFade>
         <button v-if="showButton" @click="refreshPage" class="text-black text-xl unbounded tracking-wider bg-primary-1 px-4 py-2 outline-none focus:outline-none">Restart?</button>
-      </Transition>
+      </TransitionFade>
     </div>
-  </Transition>
+  </TransitionFade>
 
   <div class="w-full h-[100dvh] p-[2vw] container-ui-controller">
     <div class="relative w-full h-full box-player flex flex-col items-stretch py-[5vw] px-[4vw] gap-[4vw]">

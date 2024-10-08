@@ -87,7 +87,9 @@ const closeWalletForm = () => {
 }
 
 onMounted(() => {
-  solana.getWallet();
+  nextTick(() => {
+    solana.getWallet();
+  })
 })
 
 watchEffect(() => {
