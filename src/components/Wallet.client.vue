@@ -155,6 +155,7 @@ onMounted(async () => {
     if(wallet.adapter.value && wallet.wallet.value) {
       solana.connect();
       publicKey.value = wallet.adapter.value.publicKey.toBase58()
+      setPublicKey(publicKey.value)
       connected.value = true
     }
   })
@@ -171,6 +172,7 @@ watchEffect(async () => {
       connected.value = false
     } else {
       publicKey.value = wallet.adapter.value?.publicKey.toBase58()
+      setPublicKey(publicKey.value)
       connected.value = true
     }
   }

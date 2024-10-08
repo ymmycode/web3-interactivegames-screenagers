@@ -1,3 +1,4 @@
+import { set } from '@vueuse/core'
 import { defineStore } from 'pinia'
 
 export const useSolana = defineStore('solana', {
@@ -42,6 +43,9 @@ export const useSolana = defineStore('solana', {
     setWalletSelection(selection) {
       this.walletSelection = selection
     },
+    setPublicKey(publicKey) {
+      this.publicKey = publicKey
+    },
     async connect() {
       try {
         this.adapter = await this.wallet.adapter()
@@ -53,6 +57,9 @@ export const useSolana = defineStore('solana', {
     async disconnect() {
       try {
         this.adapter.disconnect()
+        this.publicKey = null
+        this.wallet = null
+        this.walletSelection = null
       } catch (e) {
         console.log(e)
       }
