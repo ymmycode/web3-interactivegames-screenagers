@@ -1,5 +1,5 @@
 <template>
-  <div class="z-1 absolute top-[2vh] left-1/2 -translate-x-1/2 w-full h-[4vh] max-w-[40vw] -skew-x-[20deg] border-2 border-primary-1 z-1 p-[.5vh]">
+  <div class="z-10 absolute top-[2vh] left-1/2 -translate-x-1/2 w-full h-[4vh] max-w-[40vw] -skew-x-[20deg] border-2 border-primary-1 p-[.5vh]">
     <div class="relative w-full h-full z-1">
       <div ref="healthBarRef" class="absolute h-full w-full top-0 left-0 transition-[color,background-color,border-color,text-decoration-color,fill,stroke,background] z-1"
         :class="[

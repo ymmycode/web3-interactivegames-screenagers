@@ -108,6 +108,13 @@ html.lenis, html.lenis body {
   left: calc((-100 / 1920) * 100vh);
 }
 
+// wallet box setting
+.shadow-wallet-box {
+  box-shadow: 1px -23px 51px -11px rgba(255,255,255,0.62);
+  -webkit-box-shadow: 1px -23px 51px -11px rgba(255,255,255,0.62);
+  -moz-box-shadow: 1px -23px 51px -11px rgba(255,255,255,0.62);
+}
+
 
 // chat box settings
 .box {
@@ -415,8 +422,8 @@ html.lenis, html.lenis body {
 }
 
 .button-chat {
-  height: calc((140 / 1080) * 100vh);
-  width: calc((140 / 1080) * 100vh);
+  height: calc((100 / 1080) * 100vh);
+  width: calc((100 / 1080) * 100vh);
 }
 
 .button-attack:active, .button-chat:active {
@@ -516,4 +523,30 @@ html.lenis, html.lenis body {
   100% {
     transform: scale(1);
   }
+}
+
+.nested-enter-active .overlay,
+.nested-leave-active .overlay {
+  transition: all 0.3s ease-in-out;
+}
+
+.nested-enter-from .overlay,
+.nested-leave-to .overlay {
+  opacity: 0;
+}
+
+
+.nested-enter-active .bottom-sheet,
+.nested-leave-active .bottom-sheet {
+  transition: all 0.3s ease-in-out;
+}
+
+.nested-enter-from .bottom-sheet,
+.nested-leave-to .bottom-sheet {
+  transform: translateX(30px);
+  opacity: 0;
+}
+
+.nested-enter-active .bottom-sheet {
+  transition-delay: 0.15s;
 }

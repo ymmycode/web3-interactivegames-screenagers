@@ -18,6 +18,10 @@ definePageMeta({
   layout: 'index-layout',
 });
 
+useSeoMeta({
+  title: 'Defeat The Boss',
+})
+
 const mainStore = useMainStore()
 const { roomID } = storeToRefs(mainStore)
 

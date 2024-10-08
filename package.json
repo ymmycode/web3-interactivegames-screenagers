@@ -18,14 +18,20 @@
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@rive-app/canvas": "^2.20.0",
+    "@solana/wallet-adapter-backpack": "^0.1.14",
+    "@solana/wallet-adapter-base": "^0.9.23",
+    "@solana/wallet-adapter-phantom": "^0.9.24",
+    "@solana/wallet-adapter-solflare": "^0.6.28",
+    "@solana/web3.js": "^1.95.3",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/typography": "^0.5.13",
-    "@tresjs/cientos": "^4.0.0",
-    "@tresjs/nuxt": "^3.0.3",
+    "@tresjs/cientos": "^4.0.3",
+    "@tresjs/nuxt": "^3.0.7",
     "@tresjs/post-processing": "^0.7.1",
     "@vueuse/core": "^10.11.0",
     "@vueuse/nuxt": "^10.11.0",
-    "ably": "^2.3.0",
+    "ably": "^2.4.1",
+    "borsh": "0.7.0",
     "fireworks-js": "^2.10.8",
     "indonesian-badwords": "^1.0.1",
     "lenis": "^1.1.6",
@@ -33,14 +39,21 @@
     "nuxt-booster": "^3.0.16",
     "pinia": "^2.1.7",
     "qrcode-vue3": "^1.6.8",
+    "secp256k1": "^5.0.0",
+    "three": "^0.169.0",
     "vue": "latest"
   },
   "overrides": {
-    "vue": "latest"
+    "vue": "latest",
+    "borsh": "0.7.0"
   },
   "devDependencies": {
     "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
     "@pinia/nuxt": "^0.5.1",
-    "sass": "^1.77.8"
+    "sass": "^1.77.8",
+    "util": "^0.12.5"
+  },
+  "resolutions": {
+    "borsh": "0.7.0"
   }
 }

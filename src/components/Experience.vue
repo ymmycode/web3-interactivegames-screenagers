@@ -3,16 +3,10 @@
   <TresPerspectiveCamera
     :position="[0, 0, 20]"
   />
-  <!-- <OrbitControls /> -->
-  
   
   <Suspense>
     <Enemy/>
   </Suspense>
-
-  <!-- <Suspense>
-    <BackgroundSprite/>
-  </Suspense> -->
 
 </template>
 

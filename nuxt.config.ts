@@ -136,9 +136,35 @@ export default defineNuxtConfig({
   },
   ssr: true,
   generate: { fallback: '404.html' },
+  vite: {
+    optimizeDeps: {
+      include: [
+        '@solana/web3.js',
+        '@solana/wallet-adapter-base',
+      ]
+    }
+  },
   build: {
     extend (config, ctx) {
       config.resolve.symlinks = false;
     },
+    transpile: [
+      '@solana/web3.js',
+      '@solana/wallet-adapter-base',
+    ],
+  },
+  nitro: {
+    rollupConfig: {
+      external: [
+        'borsh',
+        'util',
+        'secp256k1',
+        '@solana/web3.js',
+        '@solana/wallet-adapter-phantom',
+        '@solana/wallet-adapter-solflare',
+        '@solana/wallet-adapter-backpack',
+        '@solana/wallet-adapter-base'
+      ],
+    }
   },
 })
