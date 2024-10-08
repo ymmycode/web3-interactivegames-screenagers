@@ -58,9 +58,12 @@ const wallets = ref([
     connectFunction: async() => {
       solana.getWallet("phantom");
 
-      if(!connected.value) {
-        solana.connect()
-      }
+      const to = setTimeout(() => {
+        clearTimeout(to)
+        if(!connected.value) {
+          solana.connect()
+        }
+      }, 1000)
     },
 
     disconnectFunction: async () => {
@@ -93,9 +96,12 @@ const wallets = ref([
     connectFunction: async() => {
       solana.getWallet("solflare");
 
-      if(!connected.value) {
-        solana.connect()
-      }
+      const to = setTimeout(() => {
+        clearTimeout(to)
+        if(!connected.value) {
+          solana.connect()
+        }
+      }, 1000)
     },
 
     disconnectFunction: async () => {
