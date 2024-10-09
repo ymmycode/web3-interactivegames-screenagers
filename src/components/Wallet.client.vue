@@ -43,12 +43,17 @@
                 </button>
               </div>
             </div>
+            <div class="relative z-10 p-[2vh] space-y-7 text-primary-1 shadow-wallet-box">
+              <NuxtLink :href="`https://phantom.app/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3DArsRz?ref=app.phantom`" class="unbounded text-lg text-primary-1">Phantom</NuxtLink>
+              <NuxtLink :href="`https://solflare.com/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3DArsRz?ref=app.solflare`" class="unbounded text-lg text-primary-1">Solflare</NuxtLink>
+            </div>
             <div class="w-fit mx-auto">
               <button @click="closeWalletForm" class="border border-primary-1 p-[1vh] text-center hover:bg-primary-1 hover:bg-opacity-20 group">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-[3vh] group-hover:rotate-90 transition-transform duration-300" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m42 42l-9-9M6 6l9 9zm0 36l9-9M42 6l-9 9zM24 29a5 5 0 1 0 0-10a5 5 0 0 0 0 10"/></svg>
               </button>
             </div>
           </div>
+
         </div>
       </div>
     </TransitionSlide>
