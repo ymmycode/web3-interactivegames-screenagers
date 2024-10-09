@@ -43,10 +43,10 @@
                 </button>
               </div>
             </div>
-            <div class="relative z-10 p-[2vh] space-y-7 text-primary-1 shadow-wallet-box">
+            <!-- <div class="relative z-10 p-[2vh] space-y-7 text-primary-1 shadow-wallet-box">
               <NuxtLink :href="`https://phantom.app/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3DArsRz?ref=app.phantom`" class="unbounded text-lg text-primary-1">Phantom</NuxtLink>
               <NuxtLink :href="`https://solflare.com/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3DArsRz?ref=app.solflare`" class="unbounded text-lg text-primary-1">Solflare</NuxtLink>
-            </div>
+            </div> -->
             <div class="w-fit mx-auto">
               <button @click="closeWalletForm" class="border border-primary-1 p-[1vh] text-center hover:bg-primary-1 hover:bg-opacity-20 group">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-[3vh] group-hover:rotate-90 transition-transform duration-300" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m42 42l-9-9M6 6l9 9zm0 36l9-9M42 6l-9 9zM24 29a5 5 0 1 0 0-10a5 5 0 0 0 0 10"/></svg>
@@ -77,40 +77,40 @@ const selectedWallet = ref(null)
 const { isMobileOrIsTablet, isApple, isAndroid } = useDevice()
 
 const wallets = ref([
-  {
-    id: 'phantom',
-    name: 'Phantom',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-[5vh]" viewBox="0 0 24 24"><path fill="#ab9ff2" d="M4.367 20c2.552 0 4.47-2.132 5.614-3.817a3.2 3.2 0 0 0-.216 1.103c0 .984.588 1.685 1.748 1.685c1.593 0 3.294-1.342 4.176-2.788a2 2 0 0 0-.093.581c0 .686.402 1.119 1.222 1.119c2.583 0 5.182-4.4 5.182-8.246C22 6.639 20.422 4 16.462 4C9.502 4 2 12.172 2 17.45C2 19.523 3.16 20 4.367 20m9.698-10.692c0-.745.433-1.267 1.067-1.267c.619 0 1.052.522 1.052 1.267c0 .746-.433 1.283-1.052 1.283c-.634 0-1.067-.537-1.067-1.283m3.31 0c0-.745.433-1.267 1.067-1.267c.62 0 1.052.522 1.052 1.267c0 .746-.433 1.283-1.052 1.283c-.634 0-1.067-.537-1.067-1.283"/></svg>`,
-    connectFunction: async() => {
-      if(isMobileOrIsTablet) {
-        if (isAndroid) {
-          window.location.href = `https://phantom.app/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=app.phantom`;
-          // window.open(`https://phantom.app/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=app.phantom`, '_blank');
-        }
-        if (isApple) {
-          window.location.href = `https://phantom.app/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=1598432977`;
-          // window.open(`https://phantom.app/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=1598432977`, '_blank');
-        }
-      }
-      solana.setWalletSelection('phantom')
-      walletSelection.value = 'phantom'
-      solana.getWallet();
+  // {
+  //   id: 'phantom',
+  //   name: 'Phantom',
+  //   icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-[5vh]" viewBox="0 0 24 24"><path fill="#ab9ff2" d="M4.367 20c2.552 0 4.47-2.132 5.614-3.817a3.2 3.2 0 0 0-.216 1.103c0 .984.588 1.685 1.748 1.685c1.593 0 3.294-1.342 4.176-2.788a2 2 0 0 0-.093.581c0 .686.402 1.119 1.222 1.119c2.583 0 5.182-4.4 5.182-8.246C22 6.639 20.422 4 16.462 4C9.502 4 2 12.172 2 17.45C2 19.523 3.16 20 4.367 20m9.698-10.692c0-.745.433-1.267 1.067-1.267c.619 0 1.052.522 1.052 1.267c0 .746-.433 1.283-1.052 1.283c-.634 0-1.067-.537-1.067-1.283m3.31 0c0-.745.433-1.267 1.067-1.267c.62 0 1.052.522 1.052 1.267c0 .746-.433 1.283-1.052 1.283c-.634 0-1.067-.537-1.067-1.283"/></svg>`,
+  //   connectFunction: async() => {
+  //     if(isMobileOrIsTablet) {
+  //       if (isAndroid) {
+  //         window.location.href = `https://phantom.app/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=app.phantom`;
+  //         // window.open(`https://phantom.app/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=app.phantom`, '_blank');
+  //       }
+  //       if (isApple) {
+  //         window.location.href = `https://phantom.app/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=1598432977`;
+  //         // window.open(`https://phantom.app/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=1598432977`, '_blank');
+  //       }
+  //     }
+  //     solana.setWalletSelection('phantom')
+  //     walletSelection.value = 'phantom'
+  //     solana.getWallet();
 
-      const to = setTimeout(async () => {
-        clearTimeout(to)
-        if(!connected.value) {
-          solana.connect()
-        }
-      }, 1000)
-    },
+  //     const to = setTimeout(async () => {
+  //       clearTimeout(to)
+  //       if(!connected.value) {
+  //         solana.connect()
+  //       }
+  //     }, 1000)
+  //   },
 
-    disconnectFunction: async () => {
-      if(connected.value) {
-        solana.disconnect()
-        connected.value = false
-      }
-    }
-  },
+  //   disconnectFunction: async () => {
+  //     if(connected.value) {
+  //       solana.disconnect()
+  //       connected.value = false
+  //     }
+  //   }
+  // },
 
   {
     id: 'solflare',
