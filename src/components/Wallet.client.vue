@@ -119,6 +119,9 @@ const wallets = ref([
 
     `,
     connectFunction: async() => {
+      if(isMobileOrIsTablet) {
+        window.location.href = 'https://solflare.com/';
+      }
       walletSelection.value = 'solflare'
       solana.setWalletSelection('solflare')
       solana.getWallet();

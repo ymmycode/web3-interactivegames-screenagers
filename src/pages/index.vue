@@ -2,13 +2,16 @@
   <main class="fixed top-0 left-0 full-height w-full">
     <!-- <Background/> -->
     
-    <div class="absolute w-full h-full z-1">
+    <div v-if="isDesktopOrTablet" class="absolute w-full h-full z-1">
       <div class="container-ui">
         <div class="relative w-full h-full box">
           <UIElements :connectedDevice="deviceConnected"/>
           <GamePlay/>
         </div>
       </div>
+    </div>
+    <div v-else class="absolute left-0 top-0 w-full h-full text-center text-lg unbounded flex justify-center items-center text-primary-1">
+      This Link Must Be Opened On Desktop or Tablet
     </div>
   </main>
 </template>
@@ -24,6 +27,7 @@ useSeoMeta({
 
 const mainStore = useMainStore()
 const { roomID } = storeToRefs(mainStore)
+const { isDesktopOrTablet } = useDevice()
 
 // ably realtime
 const config = useRuntimeConfig()
