@@ -69,7 +69,7 @@ const publicKey = ref(null)
 const walletSelection = ref(null)
 const selectedWallet = ref(null)
 
-const { isMobileOrIsTablet } = useDevice()
+const { isMobileOrIsTablet, isApple, isAndroid } = useDevice()
 
 const wallets = ref([
   {
@@ -78,7 +78,13 @@ const wallets = ref([
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-[5vh]" viewBox="0 0 24 24"><path fill="#ab9ff2" d="M4.367 20c2.552 0 4.47-2.132 5.614-3.817a3.2 3.2 0 0 0-.216 1.103c0 .984.588 1.685 1.748 1.685c1.593 0 3.294-1.342 4.176-2.788a2 2 0 0 0-.093.581c0 .686.402 1.119 1.222 1.119c2.583 0 5.182-4.4 5.182-8.246C22 6.639 20.422 4 16.462 4C9.502 4 2 12.172 2 17.45C2 19.523 3.16 20 4.367 20m9.698-10.692c0-.745.433-1.267 1.067-1.267c.619 0 1.052.522 1.052 1.267c0 .746-.433 1.283-1.052 1.283c-.634 0-1.067-.537-1.067-1.283m3.31 0c0-.745.433-1.267 1.067-1.267c.62 0 1.052.522 1.052 1.267c0 .746-.433 1.283-1.052 1.283c-.634 0-1.067-.537-1.067-1.283"/></svg>`,
     connectFunction: async() => {
       if(isMobileOrIsTablet) {
-        window.location.href = `https://phantom.app/ul/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}`;
+        if (isAndroid) {
+          window.location.href = `https://phantom.app/ul/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=app.phantom`;
+        }
+        if (isApple) {
+          window.location.href = `https://phantom.app/ul/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=1598432977`;
+        }
+        // window.open(`https://phantom.app/ul/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}`, '_blank');
       }
       solana.setWalletSelection('phantom')
       walletSelection.value = 'phantom'
@@ -122,7 +128,12 @@ const wallets = ref([
     `,
     connectFunction: async() => {
       if(isMobileOrIsTablet) {
-        window.location.href = `https://solflare.com/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}`;
+        if (isAndroid) {
+          window.location.href = `https://solflare.com/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=app.solflare`;
+        }
+        if (isApple) {
+          window.location.href = `https://solflare.com/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=1580902717`;
+        }
       }
       walletSelection.value = 'solflare'
       solana.setWalletSelection('solflare')
