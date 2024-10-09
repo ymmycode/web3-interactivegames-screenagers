@@ -1,75 +1,26 @@
-# Nuxt 3 Minimal Starter
+# TapBuddies - Screenagers
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+![alt text](mock-up.jpg)
 
-## Setup
+## Overview
+Tap Buddies is a Web3 collaborative tap game built on Solana, designed to bring real-life social interaction to the blockchain. Players team up in the same physical space, connecting via QR codes and Solana wallets to solve unique, multi-stage challenges. With each player facing different tasks, teamwork and collaboration are essential for progression. Tap Buddies is perfect for community events, co-working spaces, and gaming enthusiasts, offering in-game rewards and NFTs for completing stages and working together.
 
-Make sure to install the dependencies:
+## Installation
+To install and run the application, follow these steps:
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+1. Clone the repository:
+  ```sh
+  git clone https://github.com/yourusername/web3-interactivegames-screenagers.git
+  ```
+2. Navigate to the project directory:
+  ```sh
+  cd web3-interactivegames-screenagers
+  ```
+3. Install dependencies:
+  ```sh
+  npm install
+  ```
+4. Start the application:
+  ```sh
+  npm start
+  ```
