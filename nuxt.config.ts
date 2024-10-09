@@ -144,7 +144,14 @@ export default defineNuxtConfig({
         '@solana/web3.js',
         '@solana/wallet-adapter-base',
       ]
-    }
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+        },
+      },
+    },
   },
   build: {
     extend (config, ctx) {
