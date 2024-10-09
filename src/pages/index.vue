@@ -19,7 +19,7 @@ definePageMeta({
 });
 
 useSeoMeta({
-  title: 'Defeat The Boss',
+  title: 'Tap Buddies',
 })
 
 const mainStore = useMainStore()

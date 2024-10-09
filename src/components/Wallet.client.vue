@@ -15,7 +15,7 @@
                 <div v-if="!connected" class="unbounded text-[2vh]">{{ item.name }}</div>
                 <div class="relative">
                   <div v-if="!connected" class="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="16" stroke-dashoffset="16" d="M12 3c4.97 0 9 4.03 9 9"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="16;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path><path stroke-dasharray="64" stroke-dashoffset="64" stroke-opacity="0.3" d="M12 3c4.97 0 9 4.03 9 9c0 4.97 -4.03 9 -9 9c-4.97 0 -9 -4.03 -9 -9c0 -4.97 4.03 -9 9 -9Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.2s" values="64;0"/></path></g></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="rotate-90 w-7 h-7" viewBox="0 0 24 24"><path fill="currentColor" d="M17.812 17.289L7.712 7.208V16.5h-1v-11h11v1H8.419L18.5 16.6z"/></svg>
                   </div>
                 </div>
               </div>
@@ -77,7 +77,6 @@ const wallets = ref([
     connectFunction: async() => {
       if(isMobileOrIsTablet) {
         window.location.href = 'https://phantom.app/';
-        return
       }
       solana.setWalletSelection('phantom')
       walletSelection.value = 'phantom'
@@ -184,6 +183,10 @@ watchEffect(async () => {
       solana.setPublicKey(publicKey.value)
       connected.value = true
     }
+  }
+
+  if(publicKey.value) {
+    solana.setPublicKey(publicKey.value)
   }
 })
 
