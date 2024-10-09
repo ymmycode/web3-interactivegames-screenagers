@@ -103,7 +103,7 @@ const wallets = ref([
           window.location.href = `https://solflare.com/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=app.solflare`;
         }
         if (isApple) {
-          window.location.href = `https://solflare.com/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=1580902717`;
+          window.location.href = `https://solflare.com/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=app.solflare`;
         }
       }
       walletSelection.value = 'solflare'
