@@ -63,6 +63,13 @@ export const useSolana = defineStore('solana', {
       } catch (e) {
         console.log(e)
       }
+    },
+
+    reset() {
+      this.walletSelection = null
+      this.wallet = null
+      this.adapter = null
+      this.publicKey = null
     }
   },
 

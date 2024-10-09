@@ -63,11 +63,11 @@ const wallet = storeToRefs(solana)
 
 const open = ref(false)
 const connected = ref(false)
-const publicKey = ref()
+const publicKey = ref(null)
 const walletSelection = ref(null)
 const selectedWallet = ref(null)
 
-const { isMobile } = useDevice()
+const { isMobileOrIsTablet } = useDevice()
 
 const wallets = ref([
   {
@@ -148,6 +148,9 @@ const selectWallet = async (wallet) => {
 }
 
 const closeWalletForm = () => {
+  if(!publicKey.value) {
+    solana.reset()
+  }
   emits('closeWalletForm')
 }
 

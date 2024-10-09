@@ -233,6 +233,7 @@ const refreshPage = () => {
 onBeforeUnmount(() => {
   nextTick(() => {
     gameRoom?.presence.leave()
+    solana.reset()
   })
 })
 
