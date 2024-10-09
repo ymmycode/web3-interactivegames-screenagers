@@ -79,11 +79,11 @@ const wallets = ref([
     connectFunction: async() => {
       if(isMobileOrIsTablet) {
         if (isAndroid) {
-          window.location.href = `phantom://v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=app.phantom`;
-          // window.open(`phantom://v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=app.phantom`, '_blank');
+          window.location.href = `https://phantom.app/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=app.phantom`;
+          // window.open(`https://phantom.app/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=app.phantom`, '_blank');
         }
         if (isApple) {
-          window.location.href = `phantom://v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=1598432977`;
+          window.location.href = `https://phantom.app/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=1598432977`;
           // window.open(`https://phantom.app/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=1598432977`, '_blank');
         }
       }
@@ -130,10 +130,10 @@ const wallets = ref([
     connectFunction: async() => {
       if(isMobileOrIsTablet) {
         if (isAndroid) {
-          window.location.href = `solflare://v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=app.solflare`;
+          window.location.href = `https://solflare.com/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=app.solflare`;
         }
         if (isApple) {
-          window.location.href = `solflare://v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=1580902717`;
+          window.location.href = `https://solflare.com/ul/v1/browse/https%3A%2F%2Ftapbuddies.screenagers.io%2Fplay%3Froom%3D${roomIDSync.value}?ref=1580902717`;
         }
       }
       walletSelection.value = 'solflare'
