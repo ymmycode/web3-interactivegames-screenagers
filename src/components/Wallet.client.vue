@@ -76,7 +76,7 @@ const wallets = ref([
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-[5vh]" viewBox="0 0 24 24"><path fill="#ab9ff2" d="M4.367 20c2.552 0 4.47-2.132 5.614-3.817a3.2 3.2 0 0 0-.216 1.103c0 .984.588 1.685 1.748 1.685c1.593 0 3.294-1.342 4.176-2.788a2 2 0 0 0-.093.581c0 .686.402 1.119 1.222 1.119c2.583 0 5.182-4.4 5.182-8.246C22 6.639 20.422 4 16.462 4C9.502 4 2 12.172 2 17.45C2 19.523 3.16 20 4.367 20m9.698-10.692c0-.745.433-1.267 1.067-1.267c.619 0 1.052.522 1.052 1.267c0 .746-.433 1.283-1.052 1.283c-.634 0-1.067-.537-1.067-1.283m3.31 0c0-.745.433-1.267 1.067-1.267c.62 0 1.052.522 1.052 1.267c0 .746-.433 1.283-1.052 1.283c-.634 0-1.067-.537-1.067-1.283"/></svg>`,
     connectFunction: async() => {
       if(isMobileOrIsTablet) {
-        window.location.href = 'https://phantom.app/';
+        window.location.href = 'https://phantom.app/ul/';
       }
       solana.setWalletSelection('phantom')
       walletSelection.value = 'phantom'
@@ -120,7 +120,7 @@ const wallets = ref([
     `,
     connectFunction: async() => {
       if(isMobileOrIsTablet) {
-        window.location.href = 'https://solflare.com/';
+        window.location.href = 'https://solflare.com/ul/';
       }
       walletSelection.value = 'solflare'
       solana.setWalletSelection('solflare')
