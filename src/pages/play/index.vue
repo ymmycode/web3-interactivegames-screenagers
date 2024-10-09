@@ -220,7 +220,7 @@ const initiateGame = () => {
 onMounted(() => {
   nextTick(() => {
     // initiateGame()
-    alert(navigator.userAgent)
+    // alert(navigator.userAgent)
   })
 })
 
