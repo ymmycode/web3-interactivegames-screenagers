@@ -20,7 +20,7 @@ export default defineNuxtConfig({
   srcDir: './src',
   modules: [
     '@nuxt/devtools',
-    "@tresjs/nuxt",
+    '@tresjs/nuxt',
     '@vueuse/nuxt',
     "@nuxt/icon",
     '@morev/vue-transitions/nuxt',
@@ -33,7 +33,7 @@ export default defineNuxtConfig({
         autoImports: ['defineStore', 'acceptHMRUpdate', 'useDayjs'],
         storesDirs: ['./src/stores/**'],
       },
-  ],
+    ],
   ],
 
   booster: {
