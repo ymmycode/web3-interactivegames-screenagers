@@ -11,8 +11,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary-1': '#E3E935',
-        'primary-2': '#8CD26C',
+        'primary-1': '#25A6BB',
+        'primary-2': '#979797',
       },
       screens: {
         'big-screen': '1441px',

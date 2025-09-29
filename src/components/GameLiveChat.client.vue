@@ -17,7 +17,7 @@
       <div v-for="(msg, i) in messages" :key="msg.id" class="relative cursor-pointer">
         <div class="w-full">
           <div class="box-text-container bg-primary-1 w-fit">
-            <span class="unbounded text-black text-chat-constant">{{ msg.text }}</span>
+            <span class="lato text-black text-chat-constant">{{ msg.text }}</span>
           </div>
           <div class="masking-text-container">
             <div class="box-text-container-bottom"></div>

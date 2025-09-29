@@ -17,8 +17,8 @@
   touch-action: none;
 }
 
-.unbounded {
-  font-family: 'Unbounded', sans-serif;
+.lato {
+  font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -117,7 +117,7 @@ html.lenis, html.lenis body {
   content: "";
   position: absolute;
   inset: 0;
-  background: #e3e935;
+  background: #25A6BB;
   clip-path: polygon(
     0 0,
     calc(100% - calc((140 / 1920) * 100vw)) 0,
@@ -141,7 +141,7 @@ html.lenis, html.lenis body {
   content: "";
   position: absolute;
   inset: 0;
-  background: #e3e935;
+  background: #25A6BB;
   clip-path: polygon(0 6vh,6vh 0,calc(100% - 6vh) 0,100% 6vh,100% calc(100% - 6vh),calc(100% - 6vh) 100%,6vh 100%,0 calc(100% - 6vh),0 6vh,.4vh  calc(6vh + 0.17vh),.4vh calc(100% - 6vh - 0.17vh),calc(6vh + 0.17vh) calc(100% - .4vh),calc(100% - 6vh - 0.17vh) calc(100% - .4vh),calc(100% - .4vh) calc(100% - 6vh - 0.17vh),calc(100% - .4vh) calc(6vh + 0.17vh),calc(100% - 6vh - 0.17vh) .4vh,calc(6vh + 0.17vh) .4vh,.4vh calc(6vh + 0.17vh));
 }
 
@@ -152,7 +152,7 @@ html.lenis, html.lenis body {
   content: "";
   position: absolute;
   inset: 0;
-  background: #e3e935;
+  background: #25A6BB;
   clip-path: polygon(0 6vh,6vh 0,calc(100% - 6vh) 0,100% 6vh,100% 100%,0 100%,0 6vh,.4vh  calc(6vh + 0.17vh),.4vh calc(100% - .4vh),calc(100% - .4vh) calc(100% - .4vh),calc(100% - .4vh) calc(6vh + 0.17vh),calc(100% - 6vh - 0.17vh) .4vh,calc(6vh + 0.17vh) .4vh,.4vh calc(6vh + 0.17vh));
 }
 
@@ -163,7 +163,7 @@ html.lenis, html.lenis body {
   content: "";
   position: absolute;
   inset: 0;
-  background: #e3e935;
+  background: #25A6BB;
   clip-path: polygon(0 0,100% 0,100% calc(100% - 6vh),calc(100% - 6vh) 100%,6vh 100%,0 calc(100% - 6vh),0 0,.4vh  .4vh ,.4vh calc(100% - 6vh - 0.17vh),calc(6vh + 0.17vh) calc(100% - .4vh),calc(100% - 6vh - 0.17vh) calc(100% - .4vh),calc(100% - .4vh) calc(100% - 6vh - 0.17vh),calc(100% - .4vh) .4vh,.4vh .4vh);
 }
 
@@ -195,7 +195,7 @@ html.lenis, html.lenis body {
 }
 
 .box-text-container-bottom {
-  background: #e3e935;
+  background: #25A6BB;
   width: calc((60 / 1080) * 100vh);
   height: calc((40 / 1080) * 100vh);
   transform: skew(0deg, -40deg);
@@ -210,7 +210,7 @@ html.lenis, html.lenis body {
 }
 
 .box-text-container-bottom {
-  background: #e3e935;
+  background: #25A6BB;
   width: calc((60 / 1080) * 100vh);
   height: calc((40 / 1080) * 100vh);
   transform: skew(0deg, -40deg);
@@ -228,7 +228,7 @@ html.lenis, html.lenis body {
 }
 
 .box-text-container-bottom-mobile {
-  background: #e3e935;
+  background: #25A6BB;
   width: calc((60 / 1080) * 100vh);
   height: calc((40 / 1080) * 100vh);
   transform: skew(0deg, -40deg);
@@ -246,7 +246,7 @@ html.lenis, html.lenis body {
 }
 
 .box-text-container-bottom-mobile {
-  background: #e3e935;
+  background: #25A6BB;
   width: calc((60 / 1080) * 100vh);
   height: calc((40 / 1080) * 100vh);
   transform: skew(0deg, -40deg);
@@ -288,7 +288,7 @@ html.lenis, html.lenis body {
   content: "";
   position: absolute;
   inset: 0;
-  background: #e3e935;
+  background: #25A6BB;
   clip-path: polygon(
     0 0,
     calc(100% - calc((100 / 1080) * 100vh)) 0,
@@ -311,7 +311,7 @@ html.lenis, html.lenis body {
   content: "";
   position: absolute;
   inset: 0;
-  background: #e3e935;
+  background: #25A6BB;
   clip-path: polygon(
     0 0,
     calc(100% - calc((80 / 1080) * 100vh)) 0,
@@ -354,7 +354,7 @@ html.lenis, html.lenis body {
   content: "";
   position: absolute;
   inset: 0;
-  background: #e3e935;
+  background: #25A6BB;
   clip-path: polygon(
     0 0,
     100% 0,
@@ -455,9 +455,9 @@ html.lenis, html.lenis body {
 
 // pattern
 .bg-box-pattern-1{
-  background-color: #e3e93500;
+  background-color: #25A6BB00;
   opacity: .4;
-  background-image:  linear-gradient(#e3e935 calc((.85 / 1080) * 100vh), transparent calc((.85 / 1080) * 100vh)), linear-gradient(to right, #e3e935 calc((.85 / 1080) * 100vh), #fff0 calc((.85 / 1080) * 100vh));
+  background-image:  linear-gradient(#25A6BB calc((.85 / 1080) * 100vh), transparent calc((.85 / 1080) * 100vh)), linear-gradient(to right, #25A6BB calc((.85 / 1080) * 100vh), #fff0 calc((.85 / 1080) * 100vh));
   background-size: calc((60 / 1080) * 100vh) calc((60 / 1080) * 100vh);
 
   --mask: linear-gradient(-135deg,#0000 calc((140 / 1920) * 100vw) 0%,#000 10%);
@@ -466,9 +466,9 @@ html.lenis, html.lenis body {
 }
 
 .bg-box-pattern-2{
-  background-color: #e3e93500;
+  background-color: #25A6BB00;
   opacity: .5;
-  background-image:  linear-gradient(#e3e935 calc((.85 / 1080) * 100vh), transparent calc((.85 / 1080) * 100vh)), linear-gradient(to right, #e3e935 calc((.85 / 1080) * 100vh), #fff0 calc((.85 / 1080) * 100vh));
+  background-image:  linear-gradient(#25A6BB calc((.85 / 1080) * 100vh), transparent calc((.85 / 1080) * 100vh)), linear-gradient(to right, #25A6BB calc((.85 / 1080) * 100vh), #fff0 calc((.85 / 1080) * 100vh));
   background-size: calc((60 / 1080) * 100vh) calc((60 / 1080) * 100vh);
 
   --mask: linear-gradient(-135deg,#0000 calc((140 / 1920) * 100vw) 0%,#000 10%);

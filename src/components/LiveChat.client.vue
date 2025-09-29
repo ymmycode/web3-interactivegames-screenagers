@@ -4,7 +4,7 @@
       <div v-for="item in allItems" :key="item.clientId" class="relative cursor-pointer">
         <div v-if="item.clientId == player.id"  class="w-full flex justify-end">
           <div class="box-text-container-sender bg-primary-2 w-fit">
-            <span class="unbounded text-black text-chat-constant">{{ item.chat }}</span>
+            <span class="lato text-black text-chat-constant">{{ item.chat }}</span>
           </div>
           <div class="masking-text-container-mobile-sender">
             <div class="box-text-container-bottom-mobile-sender"></div>
@@ -12,7 +12,7 @@
         </div>
         <div v-else class="w-full flex justify-start">
           <div class="box-text-container bg-primary-1 w-fit">
-            <span class="unbounded text-black text-chat-constant">{{ item.chat }}</span>
+            <span class="lato text-black text-chat-constant">{{ item.chat }}</span>
           </div>
           <div class="masking-text-container-mobile">
             <div class="box-text-container-bottom-mobile"></div>
@@ -22,7 +22,7 @@
     </div>
   </div>
   <div v-else class="w-full h-full box-live-coms">
-    <h1 class="text-primary-1 text-[4vw] py-[4vw] px-5 unbounded tracking-wider">Chat with Us</h1>
+    <h1 class="text-primary-1 text-[4vw] py-[4vw] px-5 lato tracking-wider">Chat with Us</h1>
   </div>
 </template>
 

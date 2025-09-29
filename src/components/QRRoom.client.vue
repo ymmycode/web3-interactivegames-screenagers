@@ -3,7 +3,7 @@
   <!-- :value="`https://proto-multi-game.netlify.app/play?room=${roomIDSync}`" -->
   <div class="absolute bottom-0 right-0 w-fit z-1">
     <QRCodeVue3
-      :value="`https://tapbuddies.netlify.app/play?room=${roomIDSync}`"
+      :value="`https://ihi.screenagers.io/play?room=${roomIDSync}`"
       :qrOptions="{ typeNumber: 0, mode: 'Byte', errorCorrectionLevel: 'H' }"
       :imageOptions="{ imageSize: 0.4, }"
       image="/images/qr-logo.png"
@@ -11,7 +11,7 @@
         type: 'square',
         color: 'black',
       }"
-      :backgroundOptions="{ color: '#E3E935' }"
+      :backgroundOptions="{ color: '#25A6BB' }"
       :cornersSquareOptions="{ type: 'square', color: 'black' }"
       :cornersDotOptions="{ type: 'square', color: 'black' }"
       myclass="my-qr"

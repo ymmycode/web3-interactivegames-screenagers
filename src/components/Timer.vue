@@ -1,13 +1,13 @@
 <template>
-  <div class="unbounded text-primary-1 text-base-constant">
+  <div class="lato text-primary-1 text-base-constant">
     TIMER <br>
     <div v-if="!timeLimitReached" class="flex items-center justify-center gap-[1vh]">
-      <div class="text-center unbounded font-bold text-primary-1 text-score-constant w-2/4">{{ minutesString }}</div>
+      <div class="text-center lato font-bold text-primary-1 text-score-constant w-2/4">{{ minutesString }}</div>
       <div class="text-center text-score-constant w-1/3">:</div>
-      <div class="text-center unbounded font-bold text-primary-1 text-score-constant w-2/4">{{ secondsString }}</div>
+      <div class="text-center lato font-bold text-primary-1 text-score-constant w-2/4">{{ secondsString }}</div>
     </div>
     <div v-else class="flex items-center justify-center gap-[1vh]">
-      <div class="text-center unbounded font-bold text-primary-1 text-score-constant">Times Up</div>
+      <div class="text-center lato font-bold text-primary-1 text-score-constant">Times Up</div>
     </div>
   </div>
 </template>

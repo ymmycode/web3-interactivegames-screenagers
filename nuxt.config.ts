@@ -65,7 +65,7 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      Unbounded: '200..900',
+      Lato: true,
       Inter: '300..800',
     },
     display: 'swap',
