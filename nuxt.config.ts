@@ -7,6 +7,10 @@ export default defineNuxtConfig({
       cert: "./localhost.pem"
     },
   },
+  nitro: {
+    compressPublicAssets: true,
+    preset: 'cloudflare_pages',
+  },
   runtimeConfig: {
     app:{
       ablyAPIKey: process.env.ABLY_API_KEY,
@@ -134,7 +138,7 @@ export default defineNuxtConfig({
     port: 3000,
     host: '0.0.0.0'
   },
-  ssr: true,
+  ssr: false,
   generate: { fallback: '404.html' },
   build: {
     extend (config, ctx) {

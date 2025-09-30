@@ -97,7 +97,9 @@ let ably = null
 let gameRoom = null
 const roomIDSync = computed(() => route.query.room)
 const playerID = computed(() => player.value.id)
-const id = playerID.value ? playerID.value : mainStore.setPlayerID(MakeId(6))
+console.log(roomIDSync)
+console.log(playerID.value)
+let id
 const newMessage = ref({})
 
 const sendHit = async (command) => {
@@ -140,8 +142,15 @@ const gameplayState = (val) => {
 }
 
 onMounted(() => {
-  
+
   nextTick(async () => {
+    if(!playerID.value) {
+      mainStore.setPlayerID(MakeId(6))
+      id = player.value.id
+    }
+    else id = playerID.value
+    console.log(id)
+
     setTimeout(async () => {
       ably = new $ably.Realtime({
         key: config.app.ablyAPIKey,
@@ -164,7 +173,7 @@ onMounted(() => {
           gameplayState('won')
         }
       });
-    }, 300)
+    }, 500)
   })
 })
 

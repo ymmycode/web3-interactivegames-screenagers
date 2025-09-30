@@ -21,8 +21,8 @@ const healthDecreaseStep = computed(() => stepHealth.value)
 const totalHealth = computed(() => bossHealthStatus.value / healthDecreaseStep.value)
 const canAttack = ref(true)
 
-const minutesInput = ref(1)
-const minutesTime = ref(1)
+const minutesInput = ref(5)
+const minutesTime = ref(5)
 const secondsTime = ref(0)
 const minutesString = ref("")
 const secondsString = ref("")
@@ -102,7 +102,7 @@ const idlesState = () => {
   minutesTime.value = minutesInput.value
   minutesString.value = String(minutesTime.value).padStart(2, '0')
   secondsString.value = "0".padStart(2, '0')
-  mainStore.setHealth({health: 200, step: 2})
+  mainStore.setHealth({health: 500, step: 2})
   interval && clearInterval(interval)
   mainStore.setIdleState()
 }
