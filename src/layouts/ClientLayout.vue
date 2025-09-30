@@ -1,5 +1,9 @@
 <template>
-  <Body ontouchstart="" class="stage">
+  <Body 
+    ontouchstart="" 
+    class="stage"
+    style="touch-action: manipulation; -webkit-touch-callout: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-text-size-adjust: 100%;"
+  >
     <NuxtPage/>
   </Body>
 </template>

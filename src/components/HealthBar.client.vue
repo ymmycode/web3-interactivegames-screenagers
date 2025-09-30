@@ -33,10 +33,16 @@ const roomIDSync = computed(() => roomID.value)
 const newMessage = ref({})
 
 const healthBarRef = ref()
-const { health, stepHealth, state } = storeToRefs(mainStore)
+const { health, state } = storeToRefs(mainStore)
 const bossHealthStatus = computed(() => health.value)
-const healthDecreaseStep = computed(() => stepHealth.value)
-const totalHealth = computed(() => bossHealthStatus.value / healthDecreaseStep.value)
+const totalHealth = computed(() => {
+  const currentHealth = bossHealthStatus.value
+  const maxHealth = 400 // Match the initial health value from store
+  
+  // Calculate health percentage (0-100)
+  const percentage = (currentHealth / maxHealth) * 100
+  return isNaN(percentage) ? 100 : Math.max(0, Math.min(100, percentage))
+})
 const canAttack = ref(true)
 
 const sendState = async (command) => {
@@ -55,7 +61,8 @@ onMounted(() => {
     gameRoom = ably.channels.get(`room-${roomIDSync.value}`);
     gameRoom.attach()
     await gameRoom.subscribe((message) => {
-      if(!totalHealth.value < 1 && canAttack.value) {
+      const currentHealth = totalHealth.value
+      if(!isNaN(currentHealth) && currentHealth >= 1 && canAttack.value) {
         newMessage.value = message.data
         mainStore.decreaseHealth(newMessage.value.hitPoint)
       }
@@ -65,6 +72,8 @@ onMounted(() => {
 
 watch(() => totalHealth.value,
   (val) => {
+    console.log('Health percentage:', val)
+    // val is already a percentage (0-100), so use it directly
     healthBarRef.value.style.width = `${val}%`
     if(val <= 0) {
       mainStore.setWinState()

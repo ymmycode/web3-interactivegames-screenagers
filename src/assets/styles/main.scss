@@ -14,7 +14,10 @@
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: initial;
-  touch-action: none;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .lato {
@@ -45,6 +48,16 @@ html, body {
   min-height: -webkit-fill-available;
   height: -webkit-fill-available;
   font-family: 'Inter', sans-serif;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  
+  /* Additional iPad Safari fixes */
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
 }
 
 body{
@@ -75,6 +88,17 @@ html.lenis, html.lenis body {
 
 .full-height {
   height: calc(var(--vh, 1vh) * 100) !important;
+  min-height: calc(var(--vh, 1vh) * 100) !important;
+  
+  /* Fallback for when --vh is not available */
+  height: 100vh !important;
+  min-height: 100vh !important;
+  
+  /* iPad specific fixes */
+  @supports (-webkit-touch-callout: none) {
+    height: -webkit-fill-available !important;
+    min-height: -webkit-fill-available !important;
+  }
 }
 
 // canvas
@@ -424,13 +448,13 @@ html.lenis, html.lenis body {
 }
 
 .img-qr {
-  height: calc((180 / 1080) * 100vh);
-  width: calc((180 / 1080) * 100vh);
+  height: calc((210 / 1080) * 100vh);
+  width: calc((210 / 1080) * 100vh);
 }
 
 .img-qr {
-  height: calc((180 / 1080) * 100vh);
-  width: calc((180 / 1080) * 100vh);
+  height: calc((210 / 1080) * 100vh);
+  width: calc((210 / 1080) * 100vh);
 }
 
 .crosshair {
@@ -442,15 +466,56 @@ html.lenis, html.lenis body {
   position: relative;
   width: 100%;
   height: 100%;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: 100%;
+  min-height: calc(var(--vh, 1vh) * 100);
   @apply flex items-center justify-center;
   padding-left: calc((50 / 1920) * 100vh);
   padding-right: calc((50 / 1920) * 100vh);
   padding-top: calc((25 / 1080) * 100vh);
   padding-bottom: calc((25 / 1080) * 100vh);
+  
+  /* iPad Safari specific fixes */
+  @supports (-webkit-touch-callout: none) {
+    height: -webkit-fill-available;
+    min-height: -webkit-fill-available;
+  }
 }
 
 .disable-dbl-tap-zoom {
-  touch-action: none;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-appearance: none;
+}
+
+// Heavy-duty iOS zoom prevention for game buttons
+.no-zoom-button {
+  touch-action: manipulation !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  user-select: none !important;
+  -webkit-user-drag: none !important;
+  -webkit-appearance: none !important;
+  -webkit-text-size-adjust: 100% !important;
+  -webkit-font-smoothing: antialiased !important;
+  
+  /* Prevent any accidental zoom triggers */
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+.no-zoom-button:focus,
+.no-zoom-button:active,
+.no-zoom-button:hover {
+  touch-action: manipulation !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 // pattern
@@ -498,6 +563,31 @@ html.lenis, html.lenis body {
   --mask: linear-gradient(-90deg, rgba(227,233,53,0) 0%, rgba(227,233,53,1) 15%);
   -webkit-mask: var(--mask);
           mask: var(--mask);
+}
+
+// iPad specific viewport fixes
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait),
+       screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+  body, html {
+    height: 100vh !important;
+    height: calc(var(--vh, 1vh) * 100) !important;
+    min-height: 100vh !important;
+    min-height: calc(var(--vh, 1vh) * 100) !important;
+  }
+  
+  .full-height {
+    height: 100vh !important;
+    height: calc(var(--vh, 1vh) * 100) !important;
+    min-height: 100vh !important;
+    min-height: calc(var(--vh, 1vh) * 100) !important;
+  }
+  
+  .container-ui {
+    height: 100vh !important;
+    height: calc(var(--vh, 1vh) * 100) !important;
+    min-height: 100vh !important;
+    min-height: calc(var(--vh, 1vh) * 100) !important;
+  }
 }
 
 // animation

@@ -10,7 +10,7 @@
     <div v-if="won" class="fixed w-full h-full top-0 left-0 bg-black bg-opacity-80 backdrop-blur-lg z-20 flex justify-center flex-col gap-4 items-center text-primary-1">
       <h1 class="lato text-3xl font-bold tracking-widest">Victory</h1>
       <transition name="fade">
-        <button v-if="showButton" @click="refreshPage" class="text-black text-xl lato tracking-wider bg-primary-1 px-4 py-2 outline-none focus:outline-none">Restart?</button>
+        <button v-if="showButton" @click="refreshPage" class="no-zoom-button text-black text-xl lato tracking-wider bg-primary-1 px-4 py-2 outline-none focus:outline-none">Restart?</button>
       </transition>
     </div>
   </transition>
@@ -19,7 +19,7 @@
     <div v-if="over" class="fixed w-full h-full top-0 left-0 bg-black bg-opacity-80 backdrop-blur-lg z-20 flex justify-center flex-col gap-4 items-center text-primary-1">
       <h1 class="lato text-2xl font-bold tracking-widest">You Lose</h1>
       <transition name="fade">
-        <button v-if="showButton" @click="refreshPage" class="text-black text-xl lato tracking-wider bg-primary-1 px-4 py-2 outline-none focus:outline-none">Restart?</button>
+        <button v-if="showButton" @click="refreshPage" class="no-zoom-button text-black text-xl lato tracking-wider bg-primary-1 px-4 py-2 outline-none focus:outline-none">Restart?</button>
       </transition>
     </div>
   </transition>
@@ -28,19 +28,30 @@
     <div class="relative w-full h-full box-player flex flex-col items-stretch py-[5vw] px-[4vw] gap-[4vw]">
       <div class="w-full h-[70%] box-attack-button flex flex-col justify-center items-center gap-[8vw]">
         <div class="lato text-2xl text-primary-1 tracking-wider">Attack The Boss</div>
-        <button ref="attackButton" @click="attackPub" class="disable-dbl-tap-zoom button-attack bg-primary-1 flex justify-center items-center box-radial-button">
-          <div class="disable-dbl-tap-zoom lato text-2xl text-center origin-center font-bold">ATTACK</div>
+        <button 
+          ref="attackButton" 
+          @click="attackPub" 
+          @touchstart.prevent
+          @touchend.prevent
+          class="disable-dbl-tap-zoom no-zoom-button button-attack bg-primary-1 flex justify-center items-center box-radial-button"
+        >
+          <div class="touch-none select-none lato text-2xl text-center origin-center font-bold">ATTACK</div>
         </button>
       </div>
       <div class="w-full h-[30%] box-chat flex flex-col justify-center items-center py-[2vw] gap-[2vw]">
-        <button @click.prevent="showComs = !showComs" class="disable-dbl-tap-zoom button-chat w-full bg-primary-1 flex justify-center items-center box-radial-button-small">
-          <div class="disable-dbl-tap-zoom lato text-2xl text-center origin-center font-bold text-black p-[1vw]">
+        <button 
+          @click.prevent="showComs = !showComs" 
+          @touchstart.prevent
+          @touchend.prevent
+          class="disable-dbl-tap-zoom no-zoom-button button-chat w-full bg-primary-1 flex justify-center items-center box-radial-button-small"
+        >
+          <div class="disable-dbl-tap-zoom touch-none select-none lato text-2xl text-center origin-center font-bold text-black p-[1vw]">
             <svg class="max-w-[8vw] w-full h-auto" viewBox="0 0 100 88" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M91 0H8L0 8V87.5H3.04054L22.5 75H91L100 66V9L91 0Z" fill="currentColor "/>
             </svg>
           </div>
         </button>
-        <div class="lato text-lg text-primary-1 tracking-wider">Coms</div>
+        <div class="lato text-lg text-primary-1 tracking-wider touch-none select-none">Coms</div>
       </div>
     </div>
   </div>
@@ -59,7 +70,7 @@ definePageMeta({
 
 useHead({
   meta: [
-    { name: 'viewport', content: 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no' }
+    { name: 'viewport', content: 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover' }
   ]
 })
 
@@ -83,7 +94,28 @@ const disableZoom = (e) => {
   e.preventDefault();
 }
 
+// Prevent iOS zoom on double tap and gesture zoom
+const preventZoom = (e) => {
+  // Prevent double tap zoom
+  if (e.touches && e.touches.length > 1) {
+    e.preventDefault();
+  }
+  
+  // Prevent gesture zoom
+  if (e.scale && e.scale !== 1) {
+    e.preventDefault();
+  }
+}
+
 onMounted(async () => {
+  // Add iOS-specific zoom prevention
+  document.addEventListener('touchstart', preventZoom, { passive: false });
+  document.addEventListener('touchmove', preventZoom, { passive: false });
+  document.addEventListener('touchend', preventZoom, { passive: false });
+  document.addEventListener('gesturestart', preventZoom, { passive: false });
+  document.addEventListener('gesturechange', preventZoom, { passive: false });
+  document.addEventListener('gestureend', preventZoom, { passive: false });
+  
   nextTick(() => {
     const to = setTimeout(() => {
       intro.value = false
@@ -118,6 +150,13 @@ const hitEnemy = () => {
 
 const attackPub = (e) => {
   e.preventDefault()
+  e.stopPropagation()
+  
+  // Additional iOS zoom prevention for this specific action
+  if (e.touches) {
+    e.preventDefault()
+  }
+  
   hitEnemy()
 }
 
@@ -178,6 +217,14 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
+  // Remove event listeners
+  document.removeEventListener('touchstart', preventZoom);
+  document.removeEventListener('touchmove', preventZoom);
+  document.removeEventListener('touchend', preventZoom);
+  document.removeEventListener('gesturestart', preventZoom);
+  document.removeEventListener('gesturechange', preventZoom);
+  document.removeEventListener('gestureend', preventZoom);
+  
   nextTick(() => {
     mainStore.resetPlayerID()
     gameRoom?.presence.leave()
@@ -186,3 +233,9 @@ onBeforeUnmount(() => {
 
 watch
 </script>
+
+<style lang="scss" scoped>
+.disable-dbl-tap-zoom {
+  touch-action: manipulation;
+}
+</style>

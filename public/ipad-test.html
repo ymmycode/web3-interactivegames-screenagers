@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover">
+    <title>iPad Viewport Height Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --vh: 1vh;
+        }
+        
+        html, body {
+            height: 100vh;
+            height: calc(var(--vh, 1vh) * 100);
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            overflow: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            height: 100%;
+            height: calc(var(--vh, 1vh) * 100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        
+        .test-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px;
+        }
+        
+        .corner-markers {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: red;
+        }
+        
+        .top-left { top: 0; left: 0; }
+        .top-right { top: 0; right: 0; }
+        .bottom-left { bottom: 0; left: 0; }
+        .bottom-right { bottom: 0; right: 0; }
+        
+        .info {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="corner-markers top-left"></div>
+    <div class="corner-markers top-right"></div>
+    <div class="corner-markers bottom-left"></div>
+    <div class="corner-markers bottom-right"></div>
+    
+    <div class="container">
+        <div class="test-box">
+            <h1>iPad Viewport Height Test</h1>
+            <p>This page should fill the entire viewport without being cut off</p>
+            <p>Red squares should be at all four corners</p>
+        </div>
+        
+        <div class="test-box">
+            <p>Window size: <span id="windowSize"></span></p>
+            <p>--vh value: <span id="vhValue"></span></p>
+            <p>Viewport height: <span id="viewportHeight"></span></p>
+        </div>
+    </div>
+    
+    <div class="info">
+        Check that you can see all red corner markers and this text is not cut off
+    </div>
+
+    <script>
+        // Same viewport fix as in the Nuxt plugin
+        function updateViewportHeight() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+            
+            // Update display values
+            document.getElementById('windowSize').textContent = `${window.innerWidth} x ${window.innerHeight}`;
+            document.getElementById('vhValue').textContent = `${vh}px`;
+            document.getElementById('viewportHeight').textContent = `${window.innerHeight}px`;
+        }
+
+        // Initialize
+        updateViewportHeight();
+
+        // Listen for resize events
+        window.addEventListener('resize', updateViewportHeight);
+        window.addEventListener('orientationchange', () => {
+            setTimeout(updateViewportHeight, 100);
+        });
+
+        // Visual viewport API support
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', updateViewportHeight);
+        }
+    </script>
+</body>
+</html>

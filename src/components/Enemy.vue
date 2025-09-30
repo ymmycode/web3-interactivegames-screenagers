@@ -13,10 +13,16 @@
 
 <script setup>
 const mainStore = useMainStore()
-const { health, stepHealth, state } = storeToRefs(mainStore)
+const { health, state } = storeToRefs(mainStore)
 const bossHealthStatus = computed(() => health.value)
-const healthDecreaseStep = computed(() => stepHealth.value)
-const totalHealth = computed(() => bossHealthStatus.value / healthDecreaseStep.value)
+const totalHealth = computed(() => {
+  const currentHealth = bossHealthStatus.value
+  const maxHealth = 400 // Match the initial health value from store
+  
+  // Calculate health percentage (0-100)
+  const percentage = (currentHealth / maxHealth) * 100
+  return isNaN(percentage) ? 100 : Math.max(0, Math.min(100, percentage))
+})
 const canAttack = ref(true)
 
 const animationsProps = ref({

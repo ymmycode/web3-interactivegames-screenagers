@@ -4,8 +4,8 @@ export const useMainStore = defineStore({
   id: 'main-store',
   state: () => {
     return {
-      health: 100,
-      stepHealth: 1,
+      health: 400,
+      stepHealth: 2,
       receivedData: null,
       roomID: null, 
       gameOver: false, 
@@ -47,7 +47,9 @@ export const useMainStore = defineStore({
     },
 
     decreaseHealth (payload) {
-      this.health -= payload
+      if (typeof payload === 'number' && !isNaN(payload)) {
+        this.health = Math.max(0, this.health - payload) // Prevent negative health
+      }
     },
 
     setIdleState () {

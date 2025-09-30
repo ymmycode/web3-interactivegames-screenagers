@@ -98,9 +98,36 @@ export default defineNuxtConfig({
   app: {
     head:{
       meta:[
-        { name: 'viewport', content: 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover' },
         {"http-equiv": "Content-Security-Policy", content: "upgrade-insecure-requests"}
-      ]
+      ],
+      link: [
+        {
+          rel: 'icon',
+          type: 'image/png',
+          href: '/favicon.ico',
+        },
+
+        {
+          rel: 'apple-touch-icon',
+          sizes: '180x180',
+          href: '/apple-touch-icon.png',
+        },
+
+        {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '32x32',
+          href: '/favicon-32x32.png',
+        },
+
+        {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '16x16',
+          href: '/favicon-16x16.png',
+        },
+      ],
     },
     port: '3000',
     exec_mode: 'cluster',
@@ -125,6 +152,11 @@ export default defineNuxtConfig({
     },
     {
       src: '~/plugins/fireworks.ts',
+      ssr: false,
+      mode: 'client',
+    },
+    {
+      src: '~/plugins/viewport-fix.client.ts',
       ssr: false,
       mode: 'client',
     },
