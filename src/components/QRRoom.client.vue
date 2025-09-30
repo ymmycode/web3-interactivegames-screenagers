@@ -9,11 +9,11 @@
       image="/images/qr-logo.png"
       :dotsOptions="{
         type: 'square',
-        color: 'black',
+        color: 'white',
       }"
       :backgroundOptions="{ color: '#25A6BB' }"
-      :cornersSquareOptions="{ type: 'square', color: 'black' }"
-      :cornersDotOptions="{ type: 'square', color: 'black' }"
+      :cornersSquareOptions="{ type: 'square', color: 'white' }"
+      :cornersDotOptions="{ type: 'square', color: 'white' }"
       myclass="my-qr"
       imgclass="img-qr"
       :download="false"
